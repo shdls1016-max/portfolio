@@ -5,15 +5,29 @@
 
 body{font-size: 10px;}
 
+.nav{display: flex; z-index: 30; position: relative;}
+.nav ul{display: flex;}
+.nav ul li a{padding: 18px 20px; display: inline-block; font-size: 2em;  font-weight: 300; box-sizing: border-box;}
+
+.nav ul:hover li a{color: #676767;}
+.nav ul li:hover a{color: #469ECE; /* font-weight: 500; */}
+
+
+.repeatTop{display: flex; justify-content: space-between;}
+.repeatTop .nav{order: 2; flex-grow: 1; display: flex; justify-content: end; margin-top: 4.1em; margin-left: 3px; border-top: 1px solid #555;}
+.repeatTop .nav ul{}
+.repeatTop .copy{order: 1; font-size: 4em; /* font-size: 3.7vh; */ font-weight: 700; line-height: 120%; margin-top: 0.6em; padding-left: 0.55em;}
+
+
 
 /* home */
-#home{width: 100%; height: 100%; /* overflow: hidden; */ position: relative;}
-#home .nav{display: flex;}
+#home{width: 100%; height: 100%; position: relative; overflow: hidden;}
+/* #home .nav{display: flex;} */
 #home .nav ul{display: flex; margin-left: auto; margin-right: auto;}
 #home .nav ul li{}
-#home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;}
+/* #home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;} */
 
-#home > .copy{font-size: 100px; font-weight: 600; line-height: 120%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
+#home > .copy{font-size: 10em; font-weight: 600; line-height: 120%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
 
 #home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
 #home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
@@ -26,4 +40,10 @@ body{font-size: 10px;}
 
 
 /* profile */
-#profile{width: 100%; height: 100%;}
+#profile{width: 100%; height: 100%; background: url(/images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; border: 1px solid red; position: relative;}
+.cols3{display: flex; /*  margin-left: 10.4vw; margin-right: 10.4vw; justify-content: space-between; */ justify-content: space-around;}
+.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 120%;}
+.c3{display: flex; gap: 6.25vw;}
+.cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; margin-top: 1em;}
+.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 120%;}
+.cols3 ul li span:last-of-type{font-size: 1em; line-height: 120%;}
