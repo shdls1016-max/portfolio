@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import url(reset.css);
+@import url(font.css);
+
+body{font-size: 10px;}
+
+
+/* home */
+#home{width: 100%; height: 100%; /* overflow: hidden; */ position: relative;}
+#home .nav{display: flex;}
+#home .nav ul{display: flex; margin-left: auto; margin-right: auto;}
+#home .nav ul li{}
+#home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;}
+
+#home > .copy{font-size: 100px; font-weight: 600; line-height: 120%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
+
+#home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
+#home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
+#home .homeImgs .compass1 > img{width: 100%;}
+#home .homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 4%; left: 50%; transform:translateX(-50%); z-index: 2; border: 1px solid blue;}
+#home .homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
+#home .homeImgs .compass3{width: 100%; height: auto;  position: absolute; border: 1px solid orange; left: 50px; top: 45px;}
+#home .homeImgs .compass3 > img{display: block; width: 100%;}
+
+
+
+/* profile */
+#profile{width: 100%; height: 100%;}

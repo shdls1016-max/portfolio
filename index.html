@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제목</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <section id="home">
+        <div class="nav">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#profile">PROFILE</a></li>
+                <li><a href="#webmain">WEB</a></li>
+                <li><a href="#appmain">APP</a></li>
+            </ul>
+        </div>
+
+        <div class="copy">Designing directions, <br>not just screens</div>
+        <div class="homeImgs">
+            <figure class="compass1"><img src="images/compassbody.png" alt="히어로이미지1"></figure>
+            <figure class="compass2"><img src="images/compassneedle.png" alt="히어로이미지2"></figure>
+            <figure class="compass3"><img src="images/compassShadow.png" alt="히어로이미지1그림자"></figure>
+            <!-- 
+            <figure>
+                <img src="images/compassbody.png" alt="히어로이미지1">
+                <img src="images/compassneedle.png" alt="히어로이미지2">
+                <img src="images/compassShadow.png" alt="히어로이미지1그림자">
+            </figure> -->
+    
+        </div>
+    </section>
+
+    <section id="profile">
+        <div class="nav">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#profile">PROFILE</a></li>
+                <li><a href="#webmain">WEB</a></li>
+                <li><a href="#appmain">APP</a></li>
+            </ul>
+        </div>
+
+        <div class="copy">Designing directions, <br>not just screens</div>
+
+
+        <ul class="c1">ABOUT ME
+            <li>
+                <span>이름</span>
+                <span>손혜인</span>
+            </li>
+            <li>
+                <span>생년월일</span>
+                <span>1998. 07. 29</span>
+            </li>
+            <li>
+                <span>이메일</span>
+                <span>rv729@naver.com</span>
+            </li>
+            <li>
+                <span>전화번호</span>
+                <span>010 - 2287 - 7709</span>
+            </li>
+            <li>
+                <span>블로그</span>
+                <span>https://blog.naver.com/study_log25</span>
+            </li>
+        </ul>
+
+        <ul class="c2">GRADUATE
+            <li>
+                <span>2026. 02. 24</span>
+                <span>그린컴퓨터 아카데미 <br>
+                ux/ui 반응형 웹디자인 & 웹퍼블리셔<br> 
+                과정 수료</span>
+            </li>
+            <li>
+                <span>2017. 03 ~ 2020.02</span>
+                <span>동남보건대학교 치위생과 졸업</span>
+            </li>
+            <li>
+                <span>2014. 02 ~ 2017.02</span>
+                <span>경화여자고등학교 졸업</span>
+            </li>
+        </ul>
+
+        <ul class="c3-1">Lisence
+            <li>
+                <span>2025. 12</span>
+                <span>GTQ 1급</span>
+            </li>
+            <li>
+                <span>2025. 09</span>
+                <span>컴퓨터활용능력 1급</span>
+            </li>
+            <li>
+                <span>2023. 11</span>
+                <span>한국사능력검정시험</span>
+            </li>
+            <li>
+                <span>2010. 12</span>
+                <span>ITQ 한글파워포인트</span>
+            </li>
+            <li>
+                <span>2010. 08</span>
+                <span>ITQ 아래한글</span>
+            </li>
+        </ul>
+
+        <ul class="c3-2">
+            <li>
+                <span>2020. 2</span>
+                <span>치과위생사 면허</span>
+            </li>
+            <li>
+                <span>2020. 2</span>
+                <span>운전면허 2종 보통</span>
+            </li>
+        </ul>
+    </section>
+
+    <section id="webmain"></section>
+
+    <ul class="websub">
+        <li class="sub1"></li>
+        <li class="sub2"></li>
+        <li class="sub3"></li>
+        <li class="sub4"></li>
+    </ul>
+
+    <section id="appmain"></section>
+
+
+
+    
+
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/action.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+    <!-- 부드러운스크롤 -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+
+    <!-- 글자쪼개기 -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <!-- <script>
+        gsap.timeline({
+        scrollTrigger: {
+            trigger: ".part2",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            markers:true,   /* start,end를 화면에 표시해줌 */
+            pin:true
+        }
+        }).to(".sagak", {
+        background:'red',
+       /*  marginLeft: -150,
+        top: "225%",
+        scale: 0.05, */
+        rotate: 0
+        });
+    
+        /* gsap.timeline({
+        scrollTrigger: {
+            trigger: ".part2",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            markers: true
+        }
+        }).fromTo(
+            '.sagak',
+            { backgroundColor: 'orange' },
+            { backgroundColor: 'yellow' }
+        ); */  //fromTo 예시
+    
+    
+    </script>
+     -->
+</body>
+</html>
