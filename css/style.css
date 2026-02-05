@@ -3,8 +3,9 @@
 @import url(reset.css);
 @import url(font.css);
 
+html, body{width: 100%;}
 body{font-size: 10px;}
-.full{width: 100%; height: 100%;}
+
 
 .present{color: #469ECE;}
 .nav.bgbk ul li a.present{color: #469ECE;}
@@ -23,7 +24,7 @@ body{font-size: 10px;}
 .repeatTop{display: flex; justify-content: space-between;}
 .repeatTop .nav{order: 2; flex-grow: 1; display: flex; justify-content: end; margin-top: 4.1em; margin-left: 3px; border-top: 1px solid #555;}
 .repeatTop .nav ul{}
-.repeatTop .copy{order: 1; font-size: 4em; /* font-size: 3.7vh; */ font-weight: 700; line-height: 120%; margin-top: 0.6em; padding-left: 0.55em;}
+.repeatTop .copy{order: 1; font-size: 4em; /* font-size: 3.7vh; */ font-weight: 700; line-height: 1.2; margin-top: 0.6em; padding-left: 0.55em;}
 .repeatTop .copy.bgbk{color: #fff;}
 
 
@@ -34,7 +35,7 @@ body{font-size: 10px;}
 #home .nav ul li{}
 /* #home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;} */
 
-#home > .copy{font-size: 10em; font-weight: 600; line-height: 120%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
+#home > .copy{font-size: 10em; font-weight: 600; line-height: 1.2; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
 
 #home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
 #home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
@@ -50,11 +51,11 @@ body{font-size: 10px;}
 #profile{width: 100%; height: 100%; background: url(/images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; border: 1px solid red; box-sizing: border-box; position: relative;}
 .cols3{display: flex; /*  margin-left: 10.4vw; margin-right: 10.4vw; justify-content: space-between; */ justify-content: space-around; /* margin-top: auto; margin-bottom: auto; */ 
     /* margin-top: 22vh; */ position: relative; top: 50%; transform:translateY(-80%) ;}
-.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 120%;}
+.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2;}
 .c3{display: flex; gap: 6.25vw;}
 .cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; margin-top: 1em; font-weight: 400;}
-.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 120%;}
-.cols3 ul li span:last-of-type{font-size: 1em; line-height: 120%;}
+.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 1.2;}
+.cols3 ul li span:last-of-type{font-size: 1em; line-height: 1.2;}
 
 
 
@@ -95,3 +96,72 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 .mini.on{width: auto; padding: 0 2.4em; }
 .mini.on figure{left: auto; transform: translateX(0);}
 #webmain .mini.on .name{opacity: 1; font-size: 4em; color: #fff;}
+
+
+
+/* web sub */
+.websub > li{width: 100%; height: 100vh; overflow: hidden;
+display: flex; gap: 13.33vw; align-items: center;}
+#sub1{background: yellow; }  /* 화면 크기에 맞추는게 안됨 */
+.websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative; border: 1px solid red;}
+.websub > li > figure img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
+.websub > li > figure span{position: absolute; top: 0; left: 0; font-size: 4em; color: #fff; font-weight: 300; text-decoration: underline;}   /* ------여기 수정중 언더라인 빼고 패딩값주고 마진바텀으로 주기 */
+
+
+.websub > li > .right{/* border: 1px solid red; */}
+.websub > li > .right .rightTop{display: flex; justify-content: space-between; align-items: end; padding:0.4em 4.4em; max-width:31vw; /* 타이틀 배경 길이 바꾸고 싶으면 여기 수치 조정하기! */
+/* background: url('/images/sub1titlebg.jpg'); */ background-size: cover; border-radius: 2px;}
+.websub > li > .right .rightTop > .name{font-size: 4em; font-weight: 500; line-height: 1.2; color: #fff;}
+.websub > li > .right .rightTop > .arrow{font-size: 2em; font-weight: 300; color: #fff; display: flex; gap: 0.4em;}
+.websub > li > .right .rightTop > .arrow > figure{width:1.1em; height: 1.1em;}
+.websub > li > .right .rightTop > .arrow > figure > img{width: 100%; height: 100%;}
+.websub > li > .right .rightBottom{margin-top: 6em;}
+.websub > li > .right .rightBottom .line{display: grid; grid-template-columns: 8em 1fr; column-gap: 1em; font-size: 2.4em; font-weight: 300; line-height: 1.6; margin-bottom: 0.8em; }
+/* .websub > li > .right .rightBottom .line > div{display: flex; flex-direction: column; row-gap:0.5em;} */
+.websub > li > .right .rightBottom .line .color figure{width: 3.33em; height: auto;}
+.websub > li > .right .rightBottom .line .color figure img{width: 100%; height: 100%; }
+.websub > li > .right .btn{display: flex; text-align: right; justify-content: end;}
+.websub > li > .right .btn > a{width: 6em; height: auto; cursor: pointer;}
+.websub > li > .right .btn > a > img{width: 100%; height: 100%;}
+
+.websub > li#sub1 > .right .rightTop{background: url('/images/sub1titlebg.jpg');}
+.websub > li#sub2 > .right .rightTop{background: url('/images/sub2titlebg.jpg');}
+.websub > li#sub3 > .right .rightTop{background: url('/images/sub3titlebg.jpg');}
+.websub > li#sub4 > .right .rightTop{background: url('/images/sub4titlebg.jpg'); }
+
+
+
+/* appmain */
+#appmain{width: 100%; height: 100vh; position: relative; background: greenyellow;}
+#appmain .app2mockup{width: auto; height: 80vh; position: absolute; top: 58%; left: 50%; transform: translate(-50%,-50%);}
+#appmain .app2mockup > img{width: 100%; height: 100%; position: relative; z-index: 5; } 
+
+.app2mockup .dentalMimg{position: absolute; left:-78%; bottom: 4%; width: 135%; z-index: 1; opacity: 0;}
+.dentalMimg.on{opacity: 1;}   /* 클래스추가되면 보이게 하려고 작성함 */
+
+.dentalMimg figure.dentalbg{width: 100%; height: 44vh; }
+.dentalMimg figure.dentalbg img{width: 100%; height: 100%;}
+.dentalMimg .intro{bottom: 5%; left: 5%; transform: skewX(-5deg);}
+
+.app2mockup .routeyMimg{position: absolute; left: 44%; top: 5%; width: 135%; z-index: 1; opacity: 0;}
+.routeyMimg.on{opacity: 1;}  /* 클래스추가되면 보이게 하려고 작성함 */
+
+.routeyMimg figure.routeybg{width: 100%; height: 44vh; }
+.routeyMimg figure.routeybg img{width: 100%; height: 100%;}
+.routeyMimg .intro{top: 7%;  right: 5%; transform: skewX(-5deg);}
+
+#appmain .intro{display: flex; flex-direction: column; position: absolute;}
+#appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
+#appmain .intro a{display: flex; flex-direction: row; color: #fff; gap: 0.5em; align-items: center;}
+
+
+#appmain .intro a{}
+#appmain .intro a .warrow{width: 0.75em; height: 0.5em; position: relative;}
+#appmain .intro a .warrow .bd{border-radius: 5px; width: 98%; height: 3.4px; background: #fff; position: absolute; top: 50%; transform:translateY(-50%) ;}
+#appmain .intro a .warrow .bd::before,
+#appmain .intro a .warrow .bd::after
+{content:''; width: 50%; height: 100%; background: #fff; border-radius: 10px; position: absolute; }
+.routeyMimg .intro a .warrow .bd::before{transform: rotate(45deg);  right: 0; transform-origin: right;}
+.routeyMimg .intro a .warrow .bd::after{transform: rotate(-45deg);  right: 0; transform-origin: right;}
+.dentalMimg .intro a .warrow .bd::before{transform: rotate(45deg); left: 0; transform-origin: left;}
+.dentalMimg .intro a .warrow .bd::after{transform: rotate(-45deg); left: 0; transform-origin: left;}
