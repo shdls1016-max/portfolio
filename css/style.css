@@ -48,7 +48,7 @@ body{font-size: 10px;}
 
 
 /* profile */
-#profile{width: 100%; height: 100%; background: url(/images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; border: 1px solid red; box-sizing: border-box; position: relative;}
+#profile{width: 100%; height: 100%; background: url(../images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; position: relative;}
 .cols3{display: flex; /*  margin-left: 10.4vw; margin-right: 10.4vw; justify-content: space-between; */ justify-content: space-around; /* margin-top: auto; margin-bottom: auto; */ 
     /* margin-top: 22vh; */ position: relative; top: 50%; transform:translateY(-80%) ;}
 .c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2;}
@@ -60,8 +60,8 @@ body{font-size: 10px;}
 
 
 /* webmain */
-#webmain{width: 100%; height: 100%; border: 1px solid blue; box-sizing: border-box; position: relative;/* 
-background: url(/images/web1.jpg) center no-repeat;  */background-image: url(/images/web1.jpg); background-position:center center; background-repeat:no-repeat;  background-size: cover; transition: background-image .3s ease; }
+#webmain{width: 100%; height: 100%; box-sizing: border-box; position: relative;/* 
+background: url(/images/web1.jpg) center no-repeat;  */background-image: url(../images/web1.jpg); background-position:center center; background-repeat:no-repeat;  background-size: cover; transition: background-image .3s ease; }
 
 .mini{position: absolute; display: flex; width: 8em; height: 8em; align-items: center; border-radius: 10em; justify-content: space-between;
 /* background: rgba(17, 17, 17, 0.06); 원래 디자인 */  background:rgba(255, 255, 255, 0.02);  /*  gpt가 더 글래스 느낌 주고 싶으면 쓰라고 했던 색  */
@@ -102,11 +102,15 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 /* web sub */
 .websub > li{width: 100%; height: 100vh; overflow: hidden;
 display: flex; gap: 13.33vw; align-items: center;}
-#sub1{background: yellow; }  /* 화면 크기에 맞추는게 안됨 */
-.websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative; border: 1px solid red;}
+#sub1{/* background: yellow;  */}  
+.websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative;}
 .websub > li > figure img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
-.websub > li > figure span{position: absolute; top: 0; left: 0; font-size: 4em; color: #fff; font-weight: 300; text-decoration: underline;}   /* ------여기 수정중 언더라인 빼고 패딩값주고 마진바텀으로 주기 */
+.websub > li > figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
+opacity: 0;}   
 
+.websub > li > figure::before{content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0); }
+.websub > li > figure:hover::before{background: rgba(0, 0, 0, 0.4); transition: .4s;}
+.websub > li > figure:hover a{opacity: 1; transition: opacity .5s;}
 
 .websub > li > .right{/* border: 1px solid red; */}
 .websub > li > .right .rightTop{display: flex; justify-content: space-between; align-items: end; padding:0.4em 4.4em; max-width:31vw; /* 타이틀 배경 길이 바꾸고 싶으면 여기 수치 조정하기! */
@@ -132,7 +136,7 @@ display: flex; gap: 13.33vw; align-items: center;}
 
 
 /* appmain */
-#appmain{width: 100%; height: 100vh; position: relative; background: greenyellow;}
+#appmain{width: 100%; height: 100vh; position: relative;}
 #appmain .app2mockup{width: auto; height: 80vh; position: absolute; top: 58%; left: 50%; transform: translate(-50%,-50%);}
 #appmain .app2mockup > img{width: 100%; height: 100%; position: relative; z-index: 5; } 
 
