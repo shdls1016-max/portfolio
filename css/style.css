@@ -136,36 +136,58 @@ opacity: 0;}
 
 
 /* appmain */
-#appmain{width: 100%; height: 100vh; position: relative;}
-#appmain .app2mockup{width: auto; height: 80vh; position: absolute; top: 58%; left: 50%; transform: translate(-50%,-50%);}
-#appmain .app2mockup > img{width: 100%; height: 100%; position: relative; z-index: 5; } 
+#appmain{width: 100%; height: 100vh; position: relative; background: lightblue;} 
+.app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
+.app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
+.app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
+.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1;
+height: 55%; width: 120%;}
+.app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
+.app2mockup .routeyhover .routeybg img{width: 100%; height: 100%;}
 
-.app2mockup .dentalMimg{position: absolute; left:-78%; bottom: 4%; width: 135%; z-index: 1; opacity: 0;}
-.dentalMimg.on{opacity: 1;}   /* 클래스추가되면 보이게 하려고 작성함 */
+.app2mockup .dentalR{width: 48%; height: 90%; transform: translateY(11%);} 
+.app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;}
+.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; z-index: -1;
+height: 55%;}
+.app2mockup .dentalhover .dentalbg{width: 120%; height: 100%;}
+.app2mockup .dentalhover .dentalbg img{width: 100%; height: 100%;}
 
-.dentalMimg figure.dentalbg{width: 100%; height: 44vh; }
-.dentalMimg figure.dentalbg img{width: 100%; height: 100%;}
-.dentalMimg .intro{bottom: 5%; left: 5%; transform: skewX(-5deg);}
-
-.app2mockup .routeyMimg{position: absolute; left: 44%; top: 5%; width: 135%; z-index: 1; opacity: 0;}
-.routeyMimg.on{opacity: 1;}  /* 클래스추가되면 보이게 하려고 작성함 */
-
-.routeyMimg figure.routeybg{width: 100%; height: 44vh; }
-.routeyMimg figure.routeybg img{width: 100%; height: 100%;}
-.routeyMimg .intro{top: 7%;  right: 5%; transform: skewX(-5deg);}
+ .routeyhover .intro{top: 7%;  right: 5%; transform: skewX(2deg);}
+ .dentalhover .intro{bottom: 7%;  left: 5%; transform: skewX(-4deg);}
 
 #appmain .intro{display: flex; flex-direction: column; position: absolute;}
 #appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
 #appmain .intro a{display: flex; flex-direction: row; color: #fff; gap: 0.5em; align-items: center;}
 
-
+/* 화살표 */
 #appmain .intro a{}
 #appmain .intro a .warrow{width: 0.75em; height: 0.5em; position: relative;}
 #appmain .intro a .warrow .bd{border-radius: 5px; width: 98%; height: 3.4px; background: #fff; position: absolute; top: 50%; transform:translateY(-50%) ;}
 #appmain .intro a .warrow .bd::before,
 #appmain .intro a .warrow .bd::after
 {content:''; width: 50%; height: 100%; background: #fff; border-radius: 10px; position: absolute; }
-.routeyMimg .intro a .warrow .bd::before{transform: rotate(45deg);  right: 0; transform-origin: right;}
-.routeyMimg .intro a .warrow .bd::after{transform: rotate(-45deg);  right: 0; transform-origin: right;}
-.dentalMimg .intro a .warrow .bd::before{transform: rotate(45deg); left: 0; transform-origin: left;}
-.dentalMimg .intro a .warrow .bd::after{transform: rotate(-45deg); left: 0; transform-origin: left;}
+.routeyhover .intro a .warrow .bd::before{transform: rotate(45deg);  left: 0; transform-origin: left;}
+.routeyhover .intro a .warrow .bd::after{transform: rotate(-45deg);  left: 0; transform-origin: left;}
+.dentalhover .intro a .warrow .bd::before{transform: rotate(45deg); right: 0; transform-origin: right;}
+.dentalhover .intro a .warrow .bd::after{transform: rotate(-45deg); right: 0; transform-origin: right;}
+
+
+
+/* appsub */
+#indiApp{width: 100%; height: 100vh; display: flex;}
+#indiApp .left{width: 38.5vw; height: 100vh; 
+background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden;}
+#indiApp .left{display: flex; padding-left: 2%; padding-right: 4%; padding-top: 2%; box-sizing: border-box;}
+#indiApp .left .flowdesign{}
+#indiApp .left .flowdesign li{margin-bottom: 10px;}
+#indiApp .left .flowdesign li img{width: 94%; border-radius: 10px;}
+
+#indiApp .right a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.54vw; margin-top: 8.88vh;
+border-left: 5px solid #6192da; }
+#indiApp .right a span:first-of-type{font-size: 4em; font-weight: 500; }
+#indiApp .right a span:last-of-type{font-size: 1.8em; font-weight: 400; }
+#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw;}
+#indiApp .right .content .function{}
+#indiApp .right .content .function li{width: 15.72vw; padding: 2em 3em; background:rgba(97,146,218,0.2); border-radius: 4px;}
+#indiApp .right .content .function li h{}
+#indiApp .right .content .function li p{}
