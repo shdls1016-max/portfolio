@@ -13,20 +13,20 @@ $('.mini').mouseout(function(){
 //나침반 hover 하면 배경목업 변경되게
 $('.mini').hover(function(){
     if($(this).hasClass('dong')){
-        $('#webmain').css('background-image','url(/images/web1.jpg)');
+        $('#webmain').css('background-image','url(../images/web1.jpg)');
     }
     if($(this).hasClass('book')){
-        $('#webmain').css('background-image','url(/images/web2.jpg)');
+        $('#webmain').css('background-image','url(../images/web2.jpg)');
     }
     if($(this).hasClass('dl')){
-        $('#webmain').css('background-image','url(/images/web3.jpg)');
+        $('#webmain').css('background-image','url(../images/web3.jpg)');
     }
     if($(this).hasClass('dive')){
-        $('#webmain').css('background-image','url(/images/web4.jpg)');
+        $('#webmain').css('background-image','url(../images/web4.jpg)');
     }
 },
 function(){   //마우스 아웃시 원래이미지로
-    $('#webmain').css('background-image','url(/images/web1.jpg)');
+    $('#webmain').css('background-image','url(../images/web1.jpg)');
 }
 );
 });
