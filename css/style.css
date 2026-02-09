@@ -40,7 +40,7 @@ body{font-size: 10px;}
 #home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
 #home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
 #home .homeImgs .compass1 > img{width: 100%;}
-#home .homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 4%; left: 50%; transform:translateX(-50%); z-index: 2; border: 1px solid blue;}
+#home .homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 5%; left: 50%; transform:translateX(-50%); z-index: 2; border: 1px solid blue;}
 #home .homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
 #home .homeImgs .compass3{width: 100%; height: auto;  position: absolute; border: 1px solid orange; left: 50px; top: 45px;}
 #home .homeImgs .compass3 > img{display: block; width: 100%;}
@@ -140,23 +140,20 @@ opacity: 0;}
 .app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
 .app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
 .app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
-.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1; opacity: 0;
+.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1;
 height: 55%; width: 120%;}
 .app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
 .app2mockup .routeyhover .routeybg img{width: 100%; height: 100%;}
 
 .app2mockup .dentalR{width: 48%; height: 90%; transform: translateY(11%);} 
 .app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;}
-.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; z-index: -1; opacity: 0;
+.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; z-index: -1;
 height: 55%;}
 .app2mockup .dentalhover .dentalbg{width: 120%; height: 100%;}
 .app2mockup .dentalhover .dentalbg img{width: 100%; height: 100%;}
 
-.app2mockup .dentalR .dentalhover.on{opacity: 1;}
-.app2mockup .routeyL .routeyhover.on{opacity: 1;}
-
-.routeyhover .intro{top: 7%;  right: 5%; transform: skewX(2deg);}
-.dentalhover .intro{bottom: 7%;  left: 5%; transform: skewX(-4deg);}
+ .routeyhover .intro{top: 7%;  right: 5%; transform: skewX(2deg);}
+ .dentalhover .intro{bottom: 7%;  left: 5%; transform: skewX(-4deg);}
 
 #appmain .intro{display: flex; flex-direction: column; position: absolute;}
 #appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
@@ -185,21 +182,12 @@ background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 
 #indiApp .left .flowdesign li{margin-bottom: 10px;}
 #indiApp .left .flowdesign li img{width: 94%; border-radius: 10px;}
 
-#indiApp .right {flex-grow: 1;}
-#indiApp .right > a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.54vw; margin-top: 8.88vh;
+#indiApp .right a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.54vw; margin-top: 8.88vh;
 border-left: 5px solid #6192da; }
 #indiApp .right a span:first-of-type{font-size: 4em; font-weight: 500; }
 #indiApp .right a span:last-of-type{font-size: 1.8em; font-weight: 400; }
-#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw; display: flex; justify-content: space-between;  border: 1px solid #000;}
+#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw;}
 #indiApp .right .content .function{}
-#indiApp .right .content .function li{width: 15.72vw; padding: 2em 3em; background:rgba(97,146,218,0.2); border-radius: 4px;}
-#indiApp .right .content .function li .h{font-size: 1.8em; font-weight: 500; line-height: 1.2; color: #555;}
+#indiApp .right .content .function li{width: 15.72vw; padding: 2em 3em; background:rgba(97,146,218,0.2); border-radius: 4px; margin-bottom: 4.44vh;}
+#indiApp .right .content .function li .h{color: #555; font-size: 1.8em; font-weight: 500; line-height: 1.2; margin-bottom: 7px;}
 #indiApp .right .content .function li .p{font-size: 2em; line-height: 1.4;}
-#indiApp .right .content > figure{/* width: 17.18vw; */ width: auto; height: 63.33vh; position: relative;}
-#indiApp .right .content > figure > img{width: 100%; height: 100%; object-fit: contain; object-position: center;}
-#indiApp .right .content > figure > a{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 4em; font-weight: 300; color: #fff; padding: 1px; border-bottom: 2px solid #fff; opacity: 0;}
-#indiApp .right .content > figure::before{content: ''; width: 100%; height: 100%; background: rgba(0, 0, 0, 0); position: absolute; border-radius: 40px;}
-
-#indiApp .right .content > figure:hover > a{opacity: 1; transition: opacity .5s; }
-#indiApp .right .content > figure:hover::before{background: rgba(0, 0, 0, 0.4); transition:0.4s;}
-
