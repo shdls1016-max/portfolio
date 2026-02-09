@@ -150,9 +150,9 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 
 
 /* web sub */
-.websub > li{width: 100%; overflow: hidden;
-display: flex; gap: 13.33vw; align-items: center;}
-#sub1{/* background: yellow;  */}  
+.websub {position: absolute; top: 0; background: #fff; width: 100%; z-index: 10;}
+.websub > li{width: 100%; overflow: hidden; display: flex; gap: 13.33vw; align-items: center;}
+.websub #sub1 {}
 .websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative;}
 .websub > li > figure img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
 .websub > li > figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
@@ -182,6 +182,21 @@ opacity: 0;}
 .websub > li#sub2 > .right .rightTop{background: url('/images/sub2titlebg.jpg');}
 .websub > li#sub3 > .right .rightTop{background: url('/images/sub3titlebg.jpg');}
 .websub > li#sub4 > .right .rightTop{background: url('/images/sub4titlebg.jpg'); }
+
+#webmain .swiper {position: relative; border: 1px solid red; z-index: 10 !important; background: #fff; height: 100vh; display: none; }
+.websub {
+    display: flex; /* Swiper 내부에서는 자동으로 처리되지만 명시적 확인 */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 기존 li 스타일 유지 */
+}
 
 
 

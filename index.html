@@ -6,6 +6,10 @@
     <title>portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/jquery.fullpage.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
     <!-- nav를 섹션 밖, body 바로 아래에 배치 -->
@@ -160,11 +164,6 @@
             </a>
 
 
-            <style>
-                /* .notebook {position: absolute; width: 690px; height: 635px; border: 1px solid #fff; left: 57.5%; top:46%; transform: translate(-50%,-50%); }
-                .notebook .monitor {position: absolute; border: 1px solid red; width: 100%; height: 86%; left: 0%; top:19%; transform: skewY(-7.5deg) rotateY(-15deg); overflow: hidden;} */
-
-            </style>
 
             <div class="notebook">
                 <div class="monitor">
@@ -175,8 +174,9 @@
 
 
             
-            <ul class="websub" style="display: none;">
-                <li id="sub1">
+            <div class="swiper mySwiper">
+                <ul class="websub swiper-wrapper">
+                <li id="sub1" class="swiper-slide">
                     <figure>
                         <img src="images/web1-1.jpg" alt="동국페이지목업">
                         <a href="#webmain">BACK</a>
@@ -235,7 +235,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="sub2">
+                <li id="sub2" class="swiper-slide">
                     <figure>
                         <img src="images/web1-2.jpg" alt="도서관목업">
                         <a href="#webmain">BACK</a>
@@ -294,7 +294,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="sub3">
+                <li id="sub3" class="swiper-slide">
                     <figure>
                         <img src="images/web1-3.jpg" alt="dl목업">
                         <a href="#webmain">BACK</a>
@@ -345,7 +345,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="sub4">
+                <li id="sub4" class="swiper-slide">
                     <figure>
                         <img src="images/web1-4.png" alt="언더워터다이브목업">
                         <a href="#webmain">BACK</a>
@@ -398,7 +398,13 @@
                         </div>
                     </div>
                 </li>
-            </ul>
+                </ul>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+
         </section>
     
     
@@ -560,6 +566,44 @@
      </script>
 
 
+     <script>
+        $(document).ready(function () {
+            // 1. Swiper 초기화
+            const swiper = new Swiper('.mySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: false, // 특정 위치 이동을 위해 loop는 false 권장 (필요시 true 가능)
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                // li 내부의 커스텀 버튼도 작동하게 하려면
+                // navigation: { nextEl: '.btn a:last-child', prevEl: '.btn a:first-child' }
+            });
+
+            // 2. .mini 클릭 이벤트
+            $('.mini').on('click', function (e) {
+                e.preventDefault(); // 기본 링크 이동 방지
+                
+                // 클릭한 요소가 몇 번째 .mini 인지 인덱스 추출 (0부터 시작)
+                const idx = $(this).index('.mini'); 
+                
+                // 스와이퍼 영역을 보이게 함
+                $('.swiper').fadeIn();
+                $('.notebook').hide(); // 기존 노트북 이미지는 숨기는 것이 깔끔합니다
+                
+                // 해당 인덱스로 슬라이드 이동 (0ms 속도로 즉시 이동)
+                swiper.slideTo(idx, 0); 
+            });
+
+            // 3. BACK 버튼 클릭 시 다시 원래대로
+            $('.swiper-slide figure a[href="#webmain"]').on('click', function (e) {
+                e.preventDefault();
+                $('.mySwiper').fadeOut();
+                $('.notebook').fadeIn();
+            });
+        });
+     </script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
     
@@ -598,5 +642,7 @@
     
     </script>
      -->
+
+     
 </body>
 </html>
