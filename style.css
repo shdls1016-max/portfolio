@@ -1,0 +1,206 @@
+@charset "UTF-8";
+
+@import url(reset.css);
+@import url(font.css);
+
+html, body{width: 100%;}
+body{font-size: 10px;}
+
+
+.present{color: #469ECE;}
+.nav.bgbk ul li a.present{color: #469ECE;}
+.nav{display: flex; z-index: 30; position: relative;}
+.nav ul{display: flex;}
+.nav ul li a{padding: 18px 20px; display: inline-block; font-size: 2em;  font-weight: 300; box-sizing: border-box;}
+
+.nav.bgbk ul li a{color: #eaeaea;}
+
+.nav ul:hover li a{color: #676767;}
+.nav.bgbk ul:hover li a{color: #e0e0e0;}
+.nav ul:hover li a.present{color: #469ECE;}  /* hover햇을때 현재페이지도 그레이되게 하고 싶으면 이 줄 삭제하기 */
+.nav ul li:hover a{color: #469ECE; /* font-weight: 500; */}
+.nav.bgbk ul li:hover a{color: #469ece;}
+
+.repeatTop{display: flex; justify-content: space-between;}
+.repeatTop .nav{order: 2; flex-grow: 1; display: flex; justify-content: end; margin-top: 4.1em; margin-left: 3px; border-top: 1px solid #555;}
+.repeatTop .nav ul{}
+.repeatTop .copy{order: 1; font-size: 4em; /* font-size: 3.7vh; */ font-weight: 700; line-height: 1.2; margin-top: 0.6em; padding-left: 0.55em;}
+.repeatTop .copy.bgbk{color: #fff;}
+
+
+/* home */
+#home{width: 100%; height: 100%; position: relative; overflow: hidden;}
+/* #home .nav{display: flex;} */
+#home .nav ul{display: flex; margin-left: auto; margin-right: auto;}
+#home .nav ul li{}
+/* #home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;} */
+
+#home > .copy{font-size: 10em; font-weight: 600; line-height: 1.2; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
+
+#home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
+#home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
+#home .homeImgs .compass1 > img{width: 100%;}
+#home .homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 5%; left: 50%; transform:translateX(-50%); z-index: 2; border: 1px solid blue;}
+#home .homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
+#home .homeImgs .compass3{width: 100%; height: auto;  position: absolute; border: 1px solid orange; left: 50px; top: 45px;}
+#home .homeImgs .compass3 > img{display: block; width: 100%;}
+
+
+
+/* profile */
+#profile{width: 100%; height: 100%; background: url(../images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; position: relative;}
+.cols3{display: flex; /*  margin-left: 10.4vw; margin-right: 10.4vw; justify-content: space-between; */ justify-content: space-around; /* margin-top: auto; margin-bottom: auto; */ 
+    /* margin-top: 22vh; */ position: relative; top: 50%; transform:translateY(-80%) ;}
+.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2;}
+.c3{display: flex; gap: 6.25vw;}
+.cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; margin-top: 1em; font-weight: 400;}
+.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 1.2;}
+.cols3 ul li span:last-of-type{font-size: 1em; line-height: 1.2;}
+
+
+
+/* webmain */
+#webmain{width: 100%; height: 100%; box-sizing: border-box; position: relative;/* 
+background: url(/images/web1.jpg) center no-repeat;  */background-image: url(../images/web1.jpg); background-position:center center; background-repeat:no-repeat;  background-size: cover; transition: background-image .3s ease; }
+
+.mini{position: absolute; display: flex; width: 8em; height: 8em; align-items: center; border-radius: 10em; justify-content: space-between;
+/* background: rgba(17, 17, 17, 0.06); 원래 디자인 */  background:rgba(255, 255, 255, 0.02);  /*  gpt가 더 글래스 느낌 주고 싶으면 쓰라고 했던 색  */
+box-shadow: 
+inset -4px -4px 2px rgba(255,255,255,0.08),
+inset 4px 4px 2px rgba(255,255,255,0.1),  /* 투명도0.2였음 */
+inset 6px 8px 20px rgba(17,17,17,0.10),
+inset -2px -2px 1px rgba(17,17,17,0.20),
+inset 2px 2px 1px rgba(17,17,17,0.08),
+10px 12px 20px rgba(17,17,17,0.2); 
+backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);}
+
+.mini::before{content: ''; position: absolute; inset: 0; border-radius: 100px; padding: 1px; 
+background: linear-gradient(135deg, rgba(17,17,17,0.2),rgba(17,17,17,0.6));
+/* box-shadow: 
+inset -4px -4px 2px rgba(255,255,255,0.08),
+inset 4px 4px 2px rgba(255,255,255,0.25),
+inset 6px 8px 20px rgba(17,17,17,0.10),
+inset -2px -2px 1px rgba(17,17,17,0.20),
+inset 2px 2px 1px rgba(17,17,17,0.08); */
+-webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+-webkit-mask-composite: xor; mask-composite: exclude;}
+.mini figure{width: 7em; height: 7em; flex-shrink: 0; position: relative; left: 50%; transform: translateX(-50%);}
+.mini figure img{width: 100%; height: 100%; object-fit: contain;}
+#webmain .mini .name{opacity: 0; white-space:nowrap; margin-left: 0.5em; /* transition: opacity .3s; */}
+
+.mini.dong{top: 11%; left: 68%;}
+.mini.book{top: 62%; left: 79%;}
+.mini.dl{top: 36%; left: 33%;}
+.mini.dive{top: 86%; left: 35%;}
+
+.mini.on{width: auto; padding: 0 2.4em; }
+.mini.on figure{left: auto; transform: translateX(0);}
+#webmain .mini.on .name{opacity: 1; font-size: 4em; color: #fff;}
+
+
+
+/* web sub */
+.websub > li{width: 100%; height: 100vh; overflow: hidden;
+display: flex; gap: 13.33vw; align-items: center;}
+#sub1{/* background: yellow;  */}  
+.websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative;}
+.websub > li > figure img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
+.websub > li > figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
+opacity: 0;}   
+
+.websub > li > figure::before{content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0); }
+.websub > li > figure:hover::before{background: rgba(0, 0, 0, 0.4); transition: .4s;}
+.websub > li > figure:hover a{opacity: 1; transition: opacity .5s;}
+
+.websub > li > .right{/* border: 1px solid red; */}
+.websub > li > .right .rightTop{display: flex; justify-content: space-between; align-items: end; padding:0.4em 4.4em; max-width:31vw; /* 타이틀 배경 길이 바꾸고 싶으면 여기 수치 조정하기! */
+/* background: url('/images/sub1titlebg.jpg'); */ background-size: cover; border-radius: 2px;}
+.websub > li > .right .rightTop > .name{font-size: 4em; font-weight: 500; line-height: 1.2; color: #fff;}
+.websub > li > .right .rightTop > .arrow{font-size: 2em; font-weight: 300; color: #fff; display: flex; gap: 0.4em;}
+.websub > li > .right .rightTop > .arrow > figure{width:1.1em; height: 1.1em;}
+.websub > li > .right .rightTop > .arrow > figure > img{width: 100%; height: 100%;}
+.websub > li > .right .rightBottom{margin-top: 6em;}
+.websub > li > .right .rightBottom .line{display: grid; grid-template-columns: 8em 1fr; column-gap: 1em; font-size: 2.4em; font-weight: 300; line-height: 1.6; margin-bottom: 0.8em; }
+/* .websub > li > .right .rightBottom .line > div{display: flex; flex-direction: column; row-gap:0.5em;} */
+.websub > li > .right .rightBottom .line .color figure{width: 3.33em; height: auto;}
+.websub > li > .right .rightBottom .line .color figure img{width: 100%; height: 100%; }
+.websub > li > .right .btn{display: flex; text-align: right; justify-content: end;}
+.websub > li > .right .btn > a{width: 6em; height: auto; cursor: pointer;}
+.websub > li > .right .btn > a > img{width: 100%; height: 100%;}
+
+.websub > li#sub1 > .right .rightTop{background: url('/images/sub1titlebg.jpg');}
+.websub > li#sub2 > .right .rightTop{background: url('/images/sub2titlebg.jpg');}
+.websub > li#sub3 > .right .rightTop{background: url('/images/sub3titlebg.jpg');}
+.websub > li#sub4 > .right .rightTop{background: url('/images/sub4titlebg.jpg'); }
+
+
+
+/* appmain */
+#appmain{width: 100%; height: 100vh; position: relative; background: lightblue;} 
+.app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
+.app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
+.app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
+.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1;
+height: 55%; width: 120%;}
+.app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
+.app2mockup .routeyhover .routeybg img{width: 100%; height: 100%;}
+
+.app2mockup .dentalR{width: 48%; height: 90%; transform: translateY(11%);} 
+.app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;}
+.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; z-index: -1;
+height: 55%;}
+.app2mockup .dentalhover .dentalbg{width: 120%; height: 100%;}
+.app2mockup .dentalhover .dentalbg img{width: 100%; height: 100%;}
+
+ .routeyhover .intro{top: 7%;  right: 5%; transform: skewX(2deg);}
+ .dentalhover .intro{bottom: 7%;  left: 5%; transform: skewX(-4deg);}
+
+#appmain .intro{display: flex; flex-direction: column; position: absolute;}
+#appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
+#appmain .intro a{display: flex; flex-direction: row; color: #fff; gap: 0.5em; align-items: center;}
+
+/* 화살표 */
+#appmain .intro a{}
+#appmain .intro a .warrow{width: 0.75em; height: 0.5em; position: relative;}
+#appmain .intro a .warrow .bd{border-radius: 5px; width: 98%; height: 3.4px; background: #fff; position: absolute; top: 50%; transform:translateY(-50%) ;}
+#appmain .intro a .warrow .bd::before,
+#appmain .intro a .warrow .bd::after
+{content:''; width: 50%; height: 100%; background: #fff; border-radius: 10px; position: absolute; }
+.routeyhover .intro a .warrow .bd::before{transform: rotate(45deg);  left: 0; transform-origin: left;}
+.routeyhover .intro a .warrow .bd::after{transform: rotate(-45deg);  left: 0; transform-origin: left;}
+.dentalhover .intro a .warrow .bd::before{transform: rotate(45deg); right: 0; transform-origin: right;}
+.dentalhover .intro a .warrow .bd::after{transform: rotate(-45deg); right: 0; transform-origin: right;}
+
+
+
+/* appsub */
+#indiApp{width: 100%; height: 100vh; display: flex;}
+#indiApp .left{width: 38.5vw; height: 100vh; 
+background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden;}
+#indiApp .left{display: flex; padding-left: 2%; padding-right: 4%; padding-top: 2%; box-sizing: border-box;}
+#indiApp .left .flowdesign{}
+#indiApp .left .flowdesign li{margin-bottom: 10px;}
+#indiApp .left .flowdesign li img{width: 94%; border-radius: 10px;}
+
+#indiApp .right{flex-grow: 1;}
+#indiApp .right > a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.54vw; margin-top: 8.88vh;
+border-left: 5px solid #6192da; }
+#indiApp .right a span:first-of-type{font-size: 4em; font-weight: 500;}
+#indiApp .right a span:last-of-type{font-size: 1.8em; font-weight: 400; }
+#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw; display: flex; justify-content: space-between;align-items: center;}
+#indiApp .right .content .function{}
+#indiApp .right .content .function li{width: 15.72vw; padding: 2em 3em; background:rgba(97,146,218,0.2); border-radius: 4px; margin-bottom: 4.44vh;}
+#indiApp .right .content .function li .h{color: #555; font-size: 1.8em; font-weight: 500; line-height: 1.2; margin-bottom: 7px;}
+#indiApp .right .content .function li .p{font-size: 2em; line-height: 1.4;}
+
+#indiApp .right .content figure{position: relative; padding-right: 3.54vw;}
+#indiApp .right .content figure img{height: 63.33vh; width: auto;}
+#indiApp .right .content figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; background: red; }
+
+/* .websub > li > figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
+opacity: 0;}   
+.websub > li > figure:hover::before{background: rgba(0, 0, 0, 0.4); transition: .4s;}
+.websub > li > figure:hover a{opacity: 1; transition: opacity .5s;}
+
+ */
