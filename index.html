@@ -5,513 +5,564 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/jquery.fullpage.min.css">
 </head>
 <body>
-    <section id="home">
-        <div class="nav">
-            <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#profile">PROFILE</a></li>
-                <li><a href="#webmain">WEB</a></li>
-                <li><a href="#appmain">APP</a></li>
-            </ul>
-        </div>
+    <!-- nav를 섹션 밖, body 바로 아래에 배치 -->
+    <div class="nav">
+        <ul class="gnb">
+            <li><a href="#tohome">HOME</a></li>
+            <li><a href="#toprofile">PROFILE</a></li>
+            <li><a href="#towebmain">WEB</a></li>
+            <li><a href="#toappmain">APP</a></li>
+        </ul>
+    </div>
 
-        <div class="copy">Designing directions, <br>not just screens</div>
-        <div class="homeImgs">
-            <figure class="compass1"><img src="images/compassbody.png" alt="히어로이미지1"></figure>
-            <figure class="compass2"><img src="images/compassneedle.png" alt="히어로이미지2"></figure>
-            <figure class="compass3"><img src="images/compassShadow.png" alt="히어로이미지1그림자"></figure>
-            <!-- 
-            <figure>
-                <img src="images/compassbody.png" alt="히어로이미지1">
-                <img src="images/compassneedle.png" alt="히어로이미지2">
-                <img src="images/compassShadow.png" alt="히어로이미지1그림자">
-            </figure> -->
+    <div class="copy">
+        <p>Designing directions,</p>
+        <p>not just screens</p></div>
+
+
+    <div class="homeImgs">
+        <figure class="compass1"><img src="images/compassbody.png" alt="히어로이미지1"></figure>
+        <figure class="compass2"><img src="images/compassneedle.png" alt="나침반 핀"></figure>
+        <figure class="compass3"><img src="images/compassShadow.png" alt="히어로이미지1그림자"></figure>
+        <!-- 
+        <figure>
+            <img src="images/compassbody.png" alt="히어로이미지1">
+            <img src="images/compassneedle.png" alt="히어로이미지2">
+            <img src="images/compassShadow.png" alt="히어로이미지1그림자">
+        </figure> -->
+
+    </div>
     
-        </div>
-    </section>
 
-    <section id="profile">
-        <div class="repeatTop">
-            <div class="nav">
-                <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#profile" class="present">PROFILE</a></li>
-                    <li><a href="#webmain">WEB</a></li>
-                    <li><a href="#appmain">APP</a></li>
-                </ul>
-            </div>
-    
-            <div class="copy">Designing directions, <br>not just screens</div>
-        </div>
+    <div id="fullpage">
 
-
-        <div class="cols3">
-            <ul class="c1">ABOUT ME
-                <li>
-                    <span>이름</span>
-                    <span>손혜인</span>
-                </li>
-                <li>
-                    <span>생년월일</span>
-                    <span>1998. 07. 29</span>
-                </li>
-                <li>
-                    <span>이메일</span>
-                    <span>rv729@naver.com</span>
-                </li>
-                <li>
-                    <span>전화번호</span>
-                    <span>010 - 2287 - 7709</span>
-                </li>
-                <li>
-                    <span>블로그</span>
-                    <span>https://blog.naver.com/study_log25</span>
-                </li>
-            </ul>
-    
-            <ul class="c2">GRADUATE
-                <li>
-                    <span>2026. 02. 24</span>
-                    <span>그린컴퓨터 아카데미 <br>
-                    ux/ui 반응형 웹디자인 & 웹퍼블리셔<br> 
-                    과정 수료</span>
-                </li>
-                <li>
-                    <span>2017. 03 ~ 2020.02</span>
-                    <span>동남보건대학교 치위생과 졸업</span>
-                </li>
-                <li>
-                    <span>2014. 02 ~ 2017.02</span>
-                    <span>경화여자고등학교 졸업</span>
-                </li>
-            </ul>
-    
-            <ul class="c3">
-                <li>
-                    <ul class="c3-1">Lisence
-                        <li>
-                            <span>2025. 12</span>
-                            <span>GTQ 1급</span>
-                        </li>
-                        <li>
-                            <span>2025. 09</span>
-                            <span>컴퓨터활용능력 1급</span>
-                        </li>
-                        <li>
-                            <span>2023. 11</span>
-                            <span>한국사능력검정시험</span>
-                        </li>
-                        <li>
-                            <span>2010. 12</span>
-                            <span>ITQ 한글파워포인트</span>
-                        </li>
-                        <li>
-                            <span>2010. 08</span>
-                            <span>ITQ 아래한글</span>
-                        </li>
-                    </ul>
-                </li>
-        
-                <li>
-                    <ul class="c3-2">
-                        <li>
-                            <span>2020. 2</span>
-                            <span>치과위생사 면허</span>
-                        </li>
-                        <li>
-                            <span>2020. 2</span>
-                            <span>운전면허 2종 보통</span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="webmain">
-        <div class="repeatTop">
-            <div class="nav bgbk">
+        <section id="home" class="section">
+            <!-- <div class="nav">
                 <ul>
                     <li><a href="#home">HOME</a></li>
                     <li><a href="#profile">PROFILE</a></li>
-                    <li><a href="#webmain" class="present">WEB</a></li>
+                    <li><a href="#webmain">WEB</a></li>
                     <li><a href="#appmain">APP</a></li>
                 </ul>
-            </div>
+            </div> -->
     
-            <div class="copy bgbk">Designing directions, <br>not just screens</div>
-        </div>
-        
-        <a href="#sub1" class="mini dong" title="click">
-            <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
-            <span class="name">DONGKOOK</span>
-        </a>
-        <a href="#sub2" class="mini book" title="click">
-            <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
-            <span class="name">LIBRARY</span>
-        </a>
-        <a href="#sub3" class="mini dl" title="click">
-            <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
-            <span class="name">DL</span>
-        </a>
-        <a href="#sub4" class="mini dive" title="click">
-            <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
-            <span class="name">UNDERWATERDIVE</span>
-        </a>
-    </section>
-
-    <ul class="websub">
-        <li id="sub1">
-            <figure>
-                <img src="images/web1-1.jpg" alt="동국페이지목업">
-                <a href="#webmain">BACK</a>
-            </figure>
-            <div class="right">
-                <a class="rightTop" href="https://shdls1016-max.github.io/dongkook/" target="_blank">
-                    <span class="name sub">DONGKOOK</span>
-                    <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
-                </a>
-                <div class="rightBottom">
-                    <div class="line">
-                        <span>PAGE</span>
-                        <div>
-                            <span>메인1, 로그인1, 서브1<br>(제품정보 > 제품검색)</span>
-                            <!-- <span>(제품정보 > 제품검색)</span> -->
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>CONTRIBUTION</span>
-                        <div>
-                            <span>디자인 100%, 퍼블리싱 100%</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>USE TOOL</span>
-                        <div>
-                            <span>FIGMA, HTML5, CSS3, JQUERY <br>SWIPER LIBRARY
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>COLOR</span>
-                        <div class="color">
-                            <figure><img src="images/dkcolor.png" alt="컬러칩"></figure>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FONT</span>
-                        <div>
-                            <span>NOTO SANS, MONTSERRAT
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FEATURE</span>
-                        <div>
-                            <span>반응형<br>MIDJOURNY (짧은 영상생성)</span>
-                            <!-- <span>MIDJOURNY (짧은 영상생성)</span> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn">
-                    <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                    <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
-                </div>
-            </div>
-        </li>
-        <li id="sub2">
-            <figure>
-                <img src="images/web1-2.jpg" alt="도서관목업">
-                <a href="#webmain">BACK</a>
-            </figure>
-
-            <div class="right">
-                <a class="rightTop" href="https://shdls1016-max.github.io/library_n/" target="_blank">
-                    <span class="name sub">LIBRARY</span>
-                    <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
-                </a>
-                <div class="rightBottom">
-                    <div class="line">
-                        <span>PAGE</span>
-                        <div>
-                            <span>메인1, 서브1<br>(독서마당 > 추천도서)</span>
-                            <!-- <span>(독서마당 > 추천도서)</span> -->
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>CONTRIBUTION</span>
-                        <div>
-                            <span>디자인 100%, 퍼블리싱 100%</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>USE TOOL</span>
-                        <div>
-                            <span>FIGMA, HTML5, CSS3, JQUERY
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>COLOR</span>
-                        <div class="color">
-                            <figure><img src="images/bookcolor.png" alt="컬러칩"></figure>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FONT</span>
-                        <div>
-                            <span>NOTO SANS
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FEATURE</span>
-                        <div>
-                            <span>반응형</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn">
-                    <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                    <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
-                </div>
-            </div>
-        </li>
-        <li id="sub3">
-            <figure>
-                <img src="images/web1-3.jpg" alt="dl목업">
-                <a href="#webmain">BACK</a>
-            </figure>
-
-            <div class="right">
-                <a class="rightTop" href="https://shdls1016-max.github.io/dl_ver2/" target="_blank">
-                    <span class="name sub">DL</span>
-                    <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
-                </a>
-                <div class="rightBottom">
-                    <div class="line">
-                        <span>PAGE</span>
-                        <div>
-                            <span>메인1</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>CONTRIBUTION</span>
-                        <div>
-                            <span>디자인 100%, 퍼블리싱 100%</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>USE TOOL</span>
-                        <div>
-                            <span>FIGMA, HTML5, CSS3<br>SWIPER LIBRARY
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>COLOR</span>
-                        <div class="color">
-                            <figure><img src="images/dlcolor.png" alt="컬러칩"></figure>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FONT</span>
-                        <div>
-                            <span>INTER</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn">
-                    <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                    <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
-                </div>
-            </div>
-        </li>
-        <li id="sub4">
-            <figure>
-                <img src="images/web1-4.png" alt="언더워터다이브목업">
-                <a href="#webmain">BACK</a>
-            </figure>
-
-            <div class="right">
-                <a class="rightTop" href="https://shdls1016-max.github.io/underwaterdiving/" target="_blank">
-                    <span class="name sub">UNDERWATERDIVE</span>
-                    <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
-                </a>
-                <div class="rightBottom">
-                    <div class="line">
-                        <span>PAGE</span>
-                        <div>
-                            <span>메인1, 서브3<br>(언더워터다이브, EVENT, 교육안내)</span>
-                            <!-- <span>(언더워터다이브, EVENT, 교육안내)</span> -->
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>CONTRIBUTION</span>
-                        <div>
-                            <span>디자인 100%, 퍼블리싱 100%</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>USE TOOL</span>
-                        <div>
-                            <span>FIGMA, HTML5, CSS3, JQUERY
-                            </span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>COLOR</span>
-                        <div class="color">
-                            <figure><img src="images/divecolor.png" alt="컬러칩"></figure>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <span>FONT</span>
-                        <div>
-                            <span>HS잔다리체, NOTO SANS
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn">
-                    <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                    <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
-                </div>
-            </div>
-        </li>
-        
-    </ul>
-
-
-<section id="appmain"> 
-    <div class="repeatTop"> 
-        <div class="nav"> 
-            <ul> 
-                <li><a href="#home">HOME</a></li> 
-                <li><a href="#profile">PROFILE</a></li> 
-                <li><a href="#webmain">WEB</a></li> 
-                <li><a href="#appmain" class="present">APP</a></li> 
-            </ul> 
-        </div> 
-        <div class="copy">Designing directions, <br>not just screens</div> 
-    </div> 
+            
+        </section>
     
-    <div class="app2mockup"> 
-        <figure class="routeyL"> 
-            <img src="images/appmainLroutey.png" alt="어플1루티목업"> 
-            <div class="routeyhover on"> 
-                <figure class="routeybg"><img src="images/mainrouteyquare.png" alt=""></figure>
-                <div class="intro"> 
-                    <span>TEAM PROJECT</span> 
-                    <a href="#partTable"><span class="warrow"><span class="bd"></span></span> DESIGN PAGE</a> 
-                </div>
-            </div> 
-        </figure> 
-        <figure class="dentalR"> 
-            <img src="images/appmainRdental.png" alt=""> 
-             <div class="dentalhover on"> 
-                <figure class="dentalbg"><img src="images/maindentalsquare.png" alt=""></figure> 
-                <div class="intro"> 
-                    <span>INDIVIDUAL PROJECT</span> 
-                    <a href="#indiApp">DESIGN PAGE <span class="warrow"><span class="bd"></span></span></a> 
-                </div> 
-            </div>
-        </figure> 
-</div> 
-</section>
-
-<section id="appsub">
-    <div id="indiApp">
-        <div class="left">
-            <ul class="flowdesign">
-                <li><img src="images/dental1-1.jpg" alt="디자인페이지1"></li>
-                <li><img src="images/dental1-2.jpg" alt="디자인페이지2"></li>
-                <li><img src="images/dental1-3.png" alt="디자인페이지3"></li>
-            </ul>
+        <section id="profile" class="section">
             
-            <ul class="flowdesign">
-                <li><img src="images/dental2-1.jpg" alt="디자인페이지4"></li>
-                <li><img src="images/dental2-2-2.jpg" alt="디자인페이지5"></li>
-                <li><img src="images/dental2-3.jpg" alt="디자인페이지6"></li>
-            </ul>
-            
-            <ul class="flowdesign">
-                <li><img src="images/dental3-1.jpg" alt="디자인페이지7"></li>
-                <li><img src="images/dental3-2.jpg" alt="디자인페이지8"></li>
-            </ul>
-        </div>
-        <div class="right">
-            <a href="#appmain">
-                <span>DENTAL GUIDE</span>
-                <span>INDIVIDUAL PROJECT</span>
-            </a>
-            <div class="content">
-                <ul class="function">
+    
+    
+            <div class="cols3">
+                <ul class="c1">ABOUT ME
                     <li>
-                        <div class="h">주기능</div>
-                        <div class="p">
-                            본인의 증상을 간단한 질문을 통해 개략적으로 파악할 수 있습니다.<br><br>
-                            치과가기전 불안한 마음에 미루기보다 간단한 테스트로 불안감을 경감시키거나 경각심을 가질 수 있습니다. 
-                        </div>
+                        <span>이름</span>
+                        <span>손혜인</span>
                     </li>
                     <li>
-                        <div class="h">보조기능</div>
-                        <div class="p">
-                            치과 방문일로부터 어느 정도 시간이 흘렀는지 파악가능하고 <br>
-                            클릭을 통해 본인이 기록한 치료관련 기록을 확인할 수 있습니다. 
-                        </div>
+                        <span>생년월일</span>
+                        <span>1998. 07. 29</span>
                     </li>
                     <li>
-                        <div class="h">보조기능</div>
-                        <div class="p">
-                            전문가들이 작성한 치료 정보 및 치과 관련 정보를 손쉽게 찾아볼 수 있습니다.
-                        </div>
+                        <span>이메일</span>
+                        <span>rv729@naver.com</span>
+                    </li>
+                    <li>
+                        <span>전화번호</span>
+                        <span>010 - 2287 - 7709</span>
+                    </li>
+                    <li>
+                        <span>블로그</span>
+                        <span>https://blog.naver.com/study_log25</span>
                     </li>
                 </ul>
-
-                <!-- 연결선 -->
-
-                <figure>
-                    <img src="images/subpagedental.png" alt="덴탈가이드 홈화면 목업">
-                    <a href="#appmain">back</a>
-                </figure>
+        
+                <ul class="c2">GRADUATE
+                    <li>
+                        <span>2026. 02. 24</span>
+                        <span>그린컴퓨터 아카데미 <br>
+                        ux/ui 반응형 웹디자인 & 웹퍼블리셔<br> 
+                        과정 수료</span>
+                    </li>
+                    <li>
+                        <span>2017. 03 ~ 2020.02</span>
+                        <span>동남보건대학교 치위생과 졸업</span>
+                    </li>
+                    <li>
+                        <span>2014. 02 ~ 2017.02</span>
+                        <span>경화여자고등학교 졸업</span>
+                    </li>
+                </ul>
+        
+                <ul class="c3">
+                    <li>
+                        <ul class="c3-1">Lisence
+                            <li>
+                                <span>2025. 12</span>
+                                <span>GTQ 1급</span>
+                            </li>
+                            <li>
+                                <span>2025. 09</span>
+                                <span>컴퓨터활용능력 1급</span>
+                            </li>
+                            <li>
+                                <span>2023. 11</span>
+                                <span>한국사능력검정시험</span>
+                            </li>
+                            <li>
+                                <span>2010. 12</span>
+                                <span>ITQ 한글파워포인트</span>
+                            </li>
+                            <li>
+                                <span>2010. 08</span>
+                                <span>ITQ 아래한글</span>
+                            </li>
+                        </ul>
+                    </li>
+            
+                    <li>
+                        <ul class="c3-2">
+                            <li>
+                                <span>2020. 2</span>
+                                <span>치과위생사 면허</span>
+                            </li>
+                            <li>
+                                <span>2020. 2</span>
+                                <span>운전면허 2종 보통</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
+        </section>
+    
+        <section id="webmain" class="section">
+            
+            
+            <a href="#sub1" class="mini dong" title="click">
+                <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
+                <span class="name">DONGKOOK</span>
+            </a>
+            <a href="#sub2" class="mini book" title="click">
+                <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
+                <span class="name">LIBRARY</span>
+            </a>
+            <a href="#sub3" class="mini dl" title="click">
+                <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
+                <span class="name">DL</span>
+            </a>
+            <a href="#sub4" class="mini dive" title="click">
+                <figure><img src="images/minicompassNeedle.png" alt="미니나침반바늘"></figure>
+                <span class="name">UNDERWATERDIVE</span>
+            </a>
 
-    <ul id="teamApp">
-        <li id="partTable"></li>
-        <li id="partMe"></li>
-        <li id="partA"></li>
-        <li id="partB"></li>
-        <li id="partC"></li>
-    </ul>
-</section>
+
+            <style>
+                /* .notebook {position: absolute; width: 690px; height: 635px; border: 1px solid #fff; left: 57.5%; top:46%; transform: translate(-50%,-50%); }
+                .notebook .monitor {position: absolute; border: 1px solid red; width: 100%; height: 86%; left: 0%; top:19%; transform: skewY(-7.5deg) rotateY(-15deg); overflow: hidden;} */
+
+            </style>
+
+            <div class="notebook">
+                <div class="monitor">
+                    <img src="images/dl.jpg" alt="" class="webcapture">
+                </div>
+                <img src="images/notebook_keyboard.png" alt="" class="keyboard">
+            </div>
+
+
+            
+            <ul class="websub" style="display: none;">
+                <li id="sub1">
+                    <figure>
+                        <img src="images/web1-1.jpg" alt="동국페이지목업">
+                        <a href="#webmain">BACK</a>
+                    </figure>
+                    <div class="right">
+                        <a class="rightTop" href="https://shdls1016-max.github.io/dongkook/" target="_blank">
+                            <span class="name sub">DONGKOOK</span>
+                            <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
+                        </a>
+                        <div class="rightBottom">
+                            <div class="line">
+                                <span>PAGE</span>
+                                <div>
+                                    <span>메인1, 로그인1, 서브1<br>(제품정보 > 제품검색)</span>
+                                    <!-- <span>(제품정보 > 제품검색)</span> -->
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>CONTRIBUTION</span>
+                                <div>
+                                    <span>디자인 100%, 퍼블리싱 100%</span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>USE TOOL</span>
+                                <div>
+                                    <span>FIGMA, HTML5, CSS3, JQUERY <br>SWIPER LIBRARY
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>COLOR</span>
+                                <div class="color">
+                                    <figure><img src="images/dkcolor.png" alt="컬러칩"></figure>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FONT</span>
+                                <div>
+                                    <span>NOTO SANS, MONTSERRAT
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FEATURE</span>
+                                <div>
+                                    <span>반응형<br>MIDJOURNY (짧은 영상생성)</span>
+                                    <!-- <span>MIDJOURNY (짧은 영상생성)</span> -->
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="btn">
+                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </div>
+                </li>
+                <li id="sub2">
+                    <figure>
+                        <img src="images/web1-2.jpg" alt="도서관목업">
+                        <a href="#webmain">BACK</a>
+                    </figure>
+        
+                    <div class="right">
+                        <a class="rightTop" href="https://shdls1016-max.github.io/library_n/" target="_blank">
+                            <span class="name sub">LIBRARY</span>
+                            <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
+                        </a>
+                        <div class="rightBottom">
+                            <div class="line">
+                                <span>PAGE</span>
+                                <div>
+                                    <span>메인1, 서브1<br>(독서마당 > 추천도서)</span>
+                                    <!-- <span>(독서마당 > 추천도서)</span> -->
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>CONTRIBUTION</span>
+                                <div>
+                                    <span>디자인 100%, 퍼블리싱 100%</span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>USE TOOL</span>
+                                <div>
+                                    <span>FIGMA, HTML5, CSS3, JQUERY
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>COLOR</span>
+                                <div class="color">
+                                    <figure><img src="images/bookcolor.png" alt="컬러칩"></figure>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FONT</span>
+                                <div>
+                                    <span>NOTO SANS
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FEATURE</span>
+                                <div>
+                                    <span>반응형</span>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="btn">
+                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </div>
+                </li>
+                <li id="sub3">
+                    <figure>
+                        <img src="images/web1-3.jpg" alt="dl목업">
+                        <a href="#webmain">BACK</a>
+                    </figure>
+        
+                    <div class="right">
+                        <a class="rightTop" href="https://shdls1016-max.github.io/dl_ver2/" target="_blank">
+                            <span class="name sub">DL</span>
+                            <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
+                        </a>
+                        <div class="rightBottom">
+                            <div class="line">
+                                <span>PAGE</span>
+                                <div>
+                                    <span>메인1</span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>CONTRIBUTION</span>
+                                <div>
+                                    <span>디자인 100%, 퍼블리싱 100%</span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>USE TOOL</span>
+                                <div>
+                                    <span>FIGMA, HTML5, CSS3<br>SWIPER LIBRARY
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>COLOR</span>
+                                <div class="color">
+                                    <figure><img src="images/dlcolor.png" alt="컬러칩"></figure>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FONT</span>
+                                <div>
+                                    <span>INTER</span>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="btn">
+                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </div>
+                </li>
+                <li id="sub4">
+                    <figure>
+                        <img src="images/web1-4.png" alt="언더워터다이브목업">
+                        <a href="#webmain">BACK</a>
+                    </figure>
+        
+                    <div class="right">
+                        <a class="rightTop" href="https://shdls1016-max.github.io/underwaterdiving/" target="_blank">
+                            <span class="name sub">UNDERWATERDIVE</span>
+                            <span class="arrow">SITE <figure><img src="images/arrow-right.png" alt="이동화살표"></figure></span>
+                        </a>
+                        <div class="rightBottom">
+                            <div class="line">
+                                <span>PAGE</span>
+                                <div>
+                                    <span>메인1, 서브3<br>(언더워터다이브, EVENT, 교육안내)</span>
+                                    <!-- <span>(언더워터다이브, EVENT, 교육안내)</span> -->
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>CONTRIBUTION</span>
+                                <div>
+                                    <span>디자인 100%, 퍼블리싱 100%</span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>USE TOOL</span>
+                                <div>
+                                    <span>FIGMA, HTML5, CSS3, JQUERY
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>COLOR</span>
+                                <div class="color">
+                                    <figure><img src="images/divecolor.png" alt="컬러칩"></figure>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <span>FONT</span>
+                                <div>
+                                    <span>HS잔다리체, NOTO SANS
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="btn">
+                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    
+    
+    
+        <section id="appmain" class="section"> 
+            
+            
+            <div class="app2mockup"> 
+                <figure class="routeyL"> 
+                    <img src="images/appmainLroutey.png" alt="어플1루티목업"> 
+                    <div class="routeyhover on"> 
+                        <figure class="routeybg"><img src="images/mainrouteyquare.png" alt=""></figure>
+                        <div class="intro"> 
+                            <span>TEAM PROJECT</span> 
+                            <a href="#partTable"><span class="warrow"><span class="bd"></span></span> DESIGN PAGE</a> 
+                        </div>
+                    </div> 
+                </figure> 
+                <figure class="dentalR"> 
+                    <img src="images/appmainRdental.png" alt=""> 
+                    <div class="dentalhover on"> 
+                        <figure class="dentalbg"><img src="images/maindentalsquare.png" alt=""></figure> 
+                        <div class="intro"> 
+                            <span>INDIVIDUAL PROJECT</span> 
+                            <a href="#indiApp">DESIGN PAGE <span class="warrow"><span class="bd"></span></span></a> 
+                        </div> 
+                    </div>
+                </figure> 
+            </div> 
+
+
+
+            <section id="appsub" style="display: none;">
+                <div id="indiApp">
+                    <div class="left">
+                        <ul class="flowdesign">
+                            <li><img src="images/dental1-1.jpg" alt="디자인페이지1"></li>
+                            <li><img src="images/dental1-2.jpg" alt="디자인페이지2"></li>
+                            <li><img src="images/dental1-3.png" alt="디자인페이지3"></li>
+                        </ul>
+                        
+                        <ul class="flowdesign">
+                            <li><img src="images/dental2-1.jpg" alt="디자인페이지4"></li>
+                            <li><img src="images/dental2-2-2.jpg" alt="디자인페이지5"></li>
+                            <li><img src="images/dental2-3.jpg" alt="디자인페이지6"></li>
+                        </ul>
+                        
+                        <ul class="flowdesign">
+                            <li><img src="images/dental3-1.jpg" alt="디자인페이지7"></li>
+                            <li><img src="images/dental3-2.jpg" alt="디자인페이지8"></li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <a href="#appmain">
+                            <span>DENTAL GUIDE</span>
+                            <span>INDIVIDUAL PROJECT</span>
+                        </a>
+                        <div class="content">
+                            <ul class="function">
+                                <li>
+                                    <div class="h">주기능</div>
+                                    <div class="p">
+                                        본인의 증상을 간단한 질문을 통해 개략적으로 파악할 수 있습니다.<br><br>
+                                        치과가기전 불안한 마음에 미루기보다 간단한 테스트로 불안감을 경감시키거나 경각심을 가질 수 있습니다. 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="h">보조기능</div>
+                                    <div class="p">
+                                        치과 방문일로부터 어느 정도 시간이 흘렀는지 파악가능하고 <br>
+                                        클릭을 통해 본인이 기록한 치료관련 기록을 확인할 수 있습니다. 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="h">보조기능</div>
+                                    <div class="p">
+                                        전문가들이 작성한 치료 정보 및 치과 관련 정보를 손쉽게 찾아볼 수 있습니다.
+                                    </div>
+                                </li>
+                            </ul>
+            
+                            <!-- 연결선 -->
+            
+                            <figure>
+                                <img src="images/subpagedental.png" alt="덴탈가이드 홈화면 목업">
+                                <a href="#appmain">back</a>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            
+                <ul id="teamApp">
+                    <li id="partTable"></li>
+                    <li id="partMe"></li>
+                    <li id="partA"></li>
+                    <li id="partB"></li>
+                    <li id="partC"></li>
+                </ul>
+            </section>
+        </section>
+        
+        
+    </div>
 
 
 
     
 
     <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery.fullpage.min.js"></script>
     <script src="script/action.js"></script>
+
+     <script>
+        
+        $('#fullpage').fullpage({
+            anchors:['tohome','toprofile','towebmain','toappmain'],
+
+
+            // afterLoad: function(anchorLink, index) {
+            //     if (index >= 2) {
+            //         $('.copy').addClass('active');
+            //     } 
+            // },
+            onLeave: function(index, nextIndex, direction) {
+                $('.gnb li a').css({color:'#000'});
+
+                
+                if (nextIndex == 3) {
+                    $('.copy').css({color:'#469ECE'});
+                    $('.nav li a').css({color:'#eee'});
+                    $('.nav li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
+                } else {
+                    $('.copy').css({color:''});
+                    $('.nav li a').css({color:''});
+                    $('.nav li').eq(nextIndex-1).find('a').css({color:''})
+                }
+                
+                if (nextIndex >= 2) {
+                    $('.nav').addClass('active');
+                    $('.copy').addClass('active');
+                    $('.homeImgs').addClass('active')
+
+                    $('.nav li a').css({color:'#676767'});
+                    $('.nav li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
+                    console.log(nextIndex)
+                } else {
+                    $('.nav').removeClass('active');
+                    $('.copy').removeClass('active');
+                    $('.homeImgs').removeClass('active')
+                }
+
+                if (nextIndex == 3) {
+                    $('.nav li a').css({color:'#eee'});
+                    $('.gnb li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
+                } 
+            }
+        })
+     
+     </script>
+
+
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
-    <!-- gsap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-
-    <!-- 부드러운스크롤 -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
-
-    <!-- 글자쪼개기 -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-
+    
     <!-- <script>
         gsap.timeline({
         scrollTrigger: {

@@ -9,8 +9,8 @@ body{font-size: 10px;}
 
 .present{color: #469ECE;}
 .nav.bgbk ul li a.present{color: #469ECE;}
-.nav{display: flex; z-index: 30; position: relative;}
-.nav ul{display: flex;}
+.nav {display: flex; z-index: 30; position: relative;}
+.nav ul{display: flex;  position: absolute; left: 50%; transform: translateX(-50%); transition: 0.5s; }
 .nav ul li a{padding: 18px 20px; display: inline-block; font-size: 2em;  font-weight: 300; box-sizing: border-box;}
 
 .nav.bgbk ul li a{color: #eaeaea;}
@@ -21,49 +21,92 @@ body{font-size: 10px;}
 .nav ul li:hover a{color: #469ECE; /* font-weight: 500; */}
 .nav.bgbk ul li:hover a{color: #469ece;}
 
-.repeatTop{display: flex; justify-content: space-between;}
+
+.nav{display: flex; position: absolute; top: 0; width: 100%;}
+.nav ul li{}
+
+.nav.active {justify-content: end;}
+.nav.active ul{left: 100%;transform: translateX(-100%);}
+
+
+.nav ul li a:hover {color:#000 !important} 
+
+.copy{font-size: 10em; font-weight: 600; line-height: 1.2; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center; z-index: 5;}
+
+body > .copy {transition: 0.5s; text-transform: uppercase;}
+body > .copy.active {left: 22px; top: 18px; transform: translate(0,0); font-size: 30px; text-align: left; text-transform: uppercase;}
+body > .copy p:nth-child(1) {animation: copyText1 2s forwards;}
+body > .copy p:nth-child(2) {animation: copyText2 2s forwards;}
+@keyframes copyText1 {
+    0% {margin-left: 200px;}
+    100% {margin-left: 0px;}
+}
+@keyframes copyText2 {
+    0% {margin-left: -200px;}
+    100% {margin-left: 0px;}
+}
+
+/* 
+#home .copy {opacity: 1; transition: 0.5s;}
+#home .copy.active {opacity: 0; left: 22px; top: 18px; transform: translate(0,0); font-size: 30px; text-align: left; text-transform: uppercase;} */
+
+
+.repeatTop{display: flex; justify-content: space-between; background: #fff; z-index: 7;}
 .repeatTop .nav{order: 2; flex-grow: 1; display: flex; justify-content: end; margin-top: 4.1em; margin-left: 3px; border-top: 1px solid #555;}
 .repeatTop .nav ul{}
 .repeatTop .copy{order: 1; font-size: 4em; /* font-size: 3.7vh; */ font-weight: 700; line-height: 1.2; margin-top: 0.6em; padding-left: 0.55em;}
 .repeatTop .copy.bgbk{color: #fff;}
 
 
+/* #fullpage {z-index: 7;} */
+
 /* home */
-#home{width: 100%; height: 100%; position: relative; overflow: hidden;}
-/* #home .nav{display: flex;} */
-#home .nav ul{display: flex; margin-left: auto; margin-right: auto;}
-#home .nav ul li{}
-/* #home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300;} */
+#home{width: 100%; position: relative; z-index: 8;}
+/* #home .nav ul li a{padding: 20px; display: inline-block; font-size: 2em;  font-weight: 300; } */
 
-#home > .copy{font-size: 10em; font-weight: 600; line-height: 1.2; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center;}
 
-#home .homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid red;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
-#home .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
-#home .homeImgs .compass1 > img{width: 100%;}
-#home .homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 5%; left: 50%; transform:translateX(-50%); z-index: 2; border: 1px solid blue;}
-#home .homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
-#home .homeImgs .compass3{width: 100%; height: auto;  position: absolute; border: 1px solid orange; left: 50px; top: 45px;}
-#home .homeImgs .compass3 > img{display: block; width: 100%;}
+.homeImgs{position: absolute; width: 85.8em; /* height: auto; */ height: 64em; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 7; opacity: 1; transition: 0.1s;} /* 높이 auto 줬더니 영역이 안잡혀서 피그마수치부여함 */
+.homeImgs.active {opacity: 0; pointer-events: none;}
+.homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
+.homeImgs .compass1 > img{width: 100%;}
+.homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 11%; left: 50%; transform:translateX(-50%); z-index: 2; transition: .1s;}
+.homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
+.homeImgs .compass3{width: 100%; height: auto;  position: absolute; left: 50px; top: 45px;}
+.homeImgs .compass3 > img{display: block; width: 100%;}
 
+
+/* #home .copy {position: fixed;} */
 
 
 /* profile */
-#profile{width: 100%; height: 100%; background: url(../images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; position: relative;}
-.cols3{display: flex; /*  margin-left: 10.4vw; margin-right: 10.4vw; justify-content: space-between; */ justify-content: space-around; /* margin-top: auto; margin-bottom: auto; */ 
-    /* margin-top: 22vh; */ position: relative; top: 50%; transform:translateY(-80%) ;}
-.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2;}
+#profile{width: 100%; background: url(../images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; position: relative;}
+.cols3{display: flex;  position: relative; border: 1px solid #000; height: 100%; align-items: center; justify-content: center; gap: 100px;}
+.c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2; height: 550px;}
 .c3{display: flex; gap: 6.25vw;}
-.cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; margin-top: 1em; font-weight: 400;}
-.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 1.2;}
+.cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; /* margin-top: 1em; */ font-weight: 400;}
+.cols3 ul li span:first-of-type{color: #333; font-size: 0.75em; line-height: 1.2; margin-top: 30px;}
 .cols3 ul li span:last-of-type{font-size: 1em; line-height: 1.2;}
 
+/* 
+
+#profile .repeatTop.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+} */
+
+#profile .fp-tableCell {display: block !important;}
 
 
 /* webmain */
-#webmain{width: 100%; height: 100%; box-sizing: border-box; position: relative;/* 
-background: url(/images/web1.jpg) center no-repeat;  */background-image: url(../images/web1.jpg); background-position:center center; background-repeat:no-repeat;  background-size: cover; transition: background-image .3s ease; }
+#webmain{width: 100%; box-sizing: border-box; position: relative;/* 
+background: url(/images/web1.jpg) center no-repeat;  */background-image: url(../images/bg_notebook.jpg); background-position:center center; background-repeat:no-repeat;  background-size: cover; transition: background-image .3s ease; }
 
-.mini{position: absolute; display: flex; width: 8em; height: 8em; align-items: center; border-radius: 10em; justify-content: space-between;
+.notebook .monitor img {width: 101%;}
+
+.mini{position: absolute; display: flex; width: 8em; height: 8em; align-items: center; border-radius: 10em; justify-content: space-between; z-index: 7;
 /* background: rgba(17, 17, 17, 0.06); 원래 디자인 */  background:rgba(255, 255, 255, 0.02);  /*  gpt가 더 글래스 느낌 주고 싶으면 쓰라고 했던 색  */
 box-shadow: 
 inset -4px -4px 2px rgba(255,255,255,0.08),
@@ -73,6 +116,13 @@ inset -2px -2px 1px rgba(17,17,17,0.20),
 inset 2px 2px 1px rgba(17,17,17,0.08),
 10px 12px 20px rgba(17,17,17,0.2); 
 backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);}
+
+.notebook {position: absolute; width: 710px; height: 510px; left: 57.5%; top:46%; transform: translate(-50%,-50%); perspective: 1500px;}
+.notebook:before {content:""; width: 120px; height: 20px; background: #000; top: 50px; left: 48%; transform: translate(-50%,0) rotateY(-45deg); position: absolute; border-radius: 5px; z-index: 3; }
+.notebook .monitor {position: absolute; background: red; width: 100%; height: 100%; left: -3.4%; top:12%; transform: rotateY(-18deg) skewY(-5deg); overflow: hidden; transform-origin: top; border-radius: 10px 10px 0 0 ;}
+.notebook .monitor .webcapture {position: absolute; top: -1px; left: -1px; transition: 3s;}
+.notebook .keyboard {position: absolute; bottom: -119px; right: 0;}
+
 
 .mini::before{content: ''; position: absolute; inset: 0; border-radius: 100px; padding: 1px; 
 background: linear-gradient(135deg, rgba(17,17,17,0.2),rgba(17,17,17,0.6));
@@ -100,7 +150,7 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 
 
 /* web sub */
-.websub > li{width: 100%; height: 100vh; overflow: hidden;
+.websub > li{width: 100%; overflow: hidden;
 display: flex; gap: 13.33vw; align-items: center;}
 #sub1{/* background: yellow;  */}  
 .websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative;}
@@ -136,7 +186,7 @@ opacity: 0;}
 
 
 /* appmain */
-#appmain{width: 100%; height: 100vh; position: relative; background: lightblue;} 
+#appmain{width: 100%; position: relative; background: lightblue;} 
 .app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
 .app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
 .app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
@@ -174,7 +224,7 @@ height: 55%;}
 
 
 /* appsub */
-#indiApp{width: 100%; height: 100vh; display: flex;}
+#indiApp{width: 100%; display: flex;}
 #indiApp .left{width: 38.5vw; height: 100vh; 
 background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden;}
 #indiApp .left{display: flex; padding-left: 2%; padding-right: 4%; padding-top: 2%; box-sizing: border-box;}
