@@ -73,15 +73,15 @@
                     </li>
                     <li>
                         <span>이메일</span>
-                        <span>rv729@naver.com</span>
+                        <span>이메일 적기</span>
                     </li>
                     <li>
                         <span>전화번호</span>
-                        <span>010 - 2287 - 7709</span>
+                        <span>전화번호적기</span>
                     </li>
                     <li>
                         <span>블로그</span>
-                        <span>https://blog.naver.com/study_log25</span>
+                        <span>블로그 주소적기</span>
                     </li>
                 </ul>
         
@@ -438,7 +438,7 @@
 
 
 
-            <section id="appsub" style="display: none;">
+            <section id="appsub">
                 <div id="indiApp">
                     <div class="left">
                         <ul class="flowdesign">
@@ -459,7 +459,7 @@
                         </ul>
                     </div>
                     <div class="right">
-                        <a href="#appmain">
+                        <a href="#appmain" class="backToMain">
                             <span>DENTAL GUIDE</span>
                             <span>INDIVIDUAL PROJECT</span>
                         </a>
@@ -498,11 +498,36 @@
                 </div>
             
                 <ul id="teamApp">
-                    <li id="partTable"></li>
-                    <li id="partMe"></li>
-                    <li id="partA"></li>
-                    <li id="partB"></li>
-                    <li id="partC"></li>
+                    <li id="partTable">
+                        <div class="btn">
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </li>
+                    <li id="partMe">
+                        <div class="btn">
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </li>
+                    <li id="partA">
+                        <div class="btn">
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </li>
+                    <li id="partB">
+                        <div class="btn">
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </li>
+                    <li id="partC">
+                        <div class="btn">
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                        </div>
+                    </li>
                 </ul>
             </section>
         </section>
@@ -662,6 +687,76 @@ onLeave: function (index, nextIndex, direction) {
         });
 
         });
+
+
+
+        $(function(){
+
+  /* =========================
+     APP MAIN → APP SUB 열기
+  ========================= */
+  $('#appmain .intro a').on('click', function(e){
+    e.preventDefault();
+
+    const target = $(this).attr('href'); // #partTable / #indiApp
+
+    // appsub 오픈
+    $('#appsub').addClass('active');
+
+    // body 스크롤 잠금
+    $('body').addClass('appsub-open');
+
+    // 내부 초기화
+    $('#appsub > *').removeClass('active');
+
+    // 타겟 콘텐츠 활성화
+    $(target).addClass('active');
+
+    // fullpage 잠금
+    $.fn.fullpage.setAllowScrolling(false);
+    $.fn.fullpage.setKeyboardScrolling(false);
+    return false; 
+  });
+
+
+  /* =========================
+     TEAM PROJECT 내부 li 이동
+  ========================= */
+  $('#teamApp').on('click', '.next', function(){
+    const $current = $(this).closest('li');
+    const $next = $current.next('li');
+
+    if($next.length){
+      $('#teamApp li').removeClass('active');
+      $next.addClass('active');
+    }
+  });
+
+
+  /* =========================
+     APP SUB → APP MAIN 복귀
+  ========================= */
+  $('#appsub').on('click', '.backToMain', function(e){
+    e.preventDefault();
+
+    // appsub 닫기
+    $('#appsub').removeClass('active');
+
+    // 내부 초기화
+    $('#appsub > *').removeClass('active');
+
+    // body 스크롤 복구
+    $('body').removeClass('appsub-open');
+
+    // fullpage 복구
+    $.fn.fullpage.setAllowScrolling(true);
+    $.fn.fullpage.setKeyboardScrolling(true);
+
+    // APP MAIN 섹션으로 이동
+    fullpage_api.moveTo('toappmain');
+  });
+
+});
 
      </script>
 

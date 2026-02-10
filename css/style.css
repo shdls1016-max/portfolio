@@ -229,27 +229,30 @@ opacity: 0;}
 #appmain{width: 100%; position: relative;} 
 .app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
 .app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
-.app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
-.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1; 
-height: 55%; width: 240%; perspective: 2000px; }
+.app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top; z-index: 3; position: relative;  pointer-events: none;} 
+.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%;  
+height: 55%; width: 280%; perspective: 2000px; }
 /* .app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
 .app2mockup .routeyhover .routeybg img{width: 100%; height: 100%;}
  */
 
-.app2mockup .routeyL .routeyhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to right, #0B91EA, #3AA6EE); position: absolute; top: 0%; left: 0; clip-path: polygon(0 0%, 100% 5%, 99% 100%, 0 100%); transform: rotate(-1deg);}
+.app2mockup .routeyL .routeyhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to right, #0B91EA, #3AA6EE); position: absolute; top: 0%; left: 0; clip-path: polygon(0 0%, 100% 5%, 99% 100%, 0 100%); transform: rotate(-1deg); pointer-events: none;}
 
 
 
 
 .app2mockup .dentalR{width: 48%; height: 90%; transform: translateY(11%);} 
-.app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;}
-.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -220%; z-index: -1;
-height: 55%; width: 240%;}
+.app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;
+z-index: 3; position: relative; pointer-events: none;}
+.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; 
+height: 55%; width: 280%;}
 
-.app2mockup .dentalR .dentalhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to left, #6192DA, #7FA7E1); position: absolute; top: 0%; left: 0; clip-path: polygon(0 3%, 100% 0%, 100% 100%, 1% 98%); transform: rotate(1deg);}
+.app2mockup .dentalR .dentalhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to left, #6192DA, #7FA7E1); position: absolute; top: 0%; left: 0; clip-path: polygon(0 3%, 100% 0%, 100% 100%, 1% 98%); transform: rotate(1deg); pointer-events: none; z-index: 1;}   /* 여기 */
 
- .routeyhover .intro{top: 7%;  right: 5%; transform: skewY(1deg) rotateY(-10deg);  transform-origin: right; }
- .dentalhover .intro{bottom: 7%;  left: 5%; transform:skewY(1deg); transform-origin: left;}
+ .routeyhover .intro{top: 7%;  right: 5%; transform: skewY(1deg) rotateY(-10deg);  transform-origin: right; 
+    position: relative; z-index: 2;}
+ .dentalhover .intro{bottom: 7%;  left: 5%; transform:skewY(1deg); transform-origin: left;
+position: relative; z-index: 2;}
 
 #appmain .intro{display: flex; flex-direction: column; position: absolute;}
 #appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
@@ -269,7 +272,11 @@ height: 55%; width: 240%;}
 
 
 
-/* appsub */
+
+
+
+
+
 #indiApp{width: 100%; display: flex;}
 #indiApp .left{width: 38.5vw; height: 100vh; 
 background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden;}
@@ -292,3 +299,19 @@ border-left: 5px solid #6192da; }
 #indiApp .right .content figure img{height: 63.33vh; width: auto;}
 #indiApp .right .content figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
 font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; background: red; }
+
+
+/* appsub */
+/* 기본 숨김 */
+#appsub{position: fixed; inset: 0; background: #fff; z-index: 9999; display: none; overflow-y: auto;}
+
+/* 열렸을 때 */
+#appsub.active{display: block;}
+
+/* 내부 섹션 기본 숨김 */
+#appsub > *{display: none;}
+
+/* 활성화된 콘텐츠만 표시 */
+#appsub > *.active{display: block;}
+/* 스크롤 잠금 */
+body.appsub-open{overflow: hidden;}
