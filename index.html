@@ -24,7 +24,8 @@
 
     <div class="copy">
         <p>Designing directions,</p>
-        <p>not just screens</p></div>
+        <p>not just screens</p>
+    </div>
 
 
     <div class="homeImgs">
@@ -230,8 +231,8 @@
                         </div>
         
                         <div class="btn">
-                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </div>
                 </li>
@@ -289,8 +290,8 @@
                         </div>
         
                         <div class="btn">
-                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </div>
                 </li>
@@ -340,8 +341,8 @@
                         </div>
         
                         <div class="btn">
-                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </div>
                 </li>
@@ -393,15 +394,15 @@
                         </div>
         
                         <div class="btn">
-                            <a><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
-                            <a><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
+                            <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
+                            <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </div>
                 </li>
                 </ul>
-
+<!-- 
                 <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-prev"></div> -->
             </div>
 
 
@@ -567,81 +568,70 @@
 
 
      <script>
+
         $(document).ready(function () {
-            // 1. Swiper 초기화
-            const swiper = new Swiper('.mySwiper', {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                loop: false, // 특정 위치 이동을 위해 loop는 false 권장 (필요시 true 가능)
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                // li 내부의 커스텀 버튼도 작동하게 하려면
-                // navigation: { nextEl: '.btn a:last-child', prevEl: '.btn a:first-child' }
-            });
 
-            // 2. .mini 클릭 이벤트
-            $('.mini').on('click', function (e) {
-                e.preventDefault(); // 기본 링크 이동 방지
-                
-                // 클릭한 요소가 몇 번째 .mini 인지 인덱스 추출 (0부터 시작)
-                const idx = $(this).index('.mini'); 
-                
-                // 스와이퍼 영역을 보이게 함
-                $('.swiper').fadeIn();
-                $('.notebook').hide(); // 기존 노트북 이미지는 숨기는 것이 깔끔합니다
-                
-                // 해당 인덱스로 슬라이드 이동 (0ms 속도로 즉시 이동)
-                swiper.slideTo(idx, 0); 
-            });
-
-            // 3. BACK 버튼 클릭 시 다시 원래대로
-            $('.swiper-slide figure a[href="#webmain"]').on('click', function (e) {
-                e.preventDefault();
-                $('.mySwiper').fadeOut();
-                $('.notebook').fadeIn();
-            });
+        /* ===============================
+            1. Swiper 초기화
+        =============================== */
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,          // ⭐ 무한 루프
+            speed: 600,
+            allowTouchMove: true
         });
+
+
+        /* ===============================
+            2. mini 클릭 → 해당 슬라이드로 이동
+            (loop 대응)
+        =============================== */
+        $('.mini').on('click', function (e) {
+            e.preventDefault();
+
+            const idx = $(this).index('.mini');
+
+            $('.mySwiper').fadeIn();
+            $('.notebook').hide();
+
+            swiper.slideToLoop(idx, 0); // ⭐ loop 환경 대응
+        });
+
+
+        /* ===============================
+            3. 내가 만든 버튼으로 슬라이드 이동
+        =============================== */
+        // 오른쪽 버튼 → 다음 슬라이드
+        $(document).on('click', '.btn a img[alt="오른쪽이동버튼"]', function (e) {
+            e.preventDefault();
+            swiper.slideNext();
+        });
+
+        // 왼쪽 버튼 → 이전 슬라이드
+        $(document).on('click', '.btn a img[alt="왼쪽이동버튼"]', function (e) {
+            e.preventDefault();
+            swiper.slidePrev();
+        });
+
+
+        /* ===============================
+            4. BACK 버튼 → 스와이퍼 닫기
+        =============================== */
+        $(document).on('click', '.swiper-slide figure a[href="#webmain"]', function (e) {
+            e.preventDefault();
+
+            $('.mySwiper').fadeOut();
+            $('.notebook').fadeIn();
+        });
+
+        });
+
      </script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
     
-    <!-- <script>
-        gsap.timeline({
-        scrollTrigger: {
-            trigger: ".part2",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            markers:true,   /* start,end를 화면에 표시해줌 */
-            pin:true
-        }
-        }).to(".sagak", {
-        background:'red',
-       /*  marginLeft: -150,
-        top: "225%",
-        scale: 0.05, */
-        rotate: 0
-        });
-    
-        /* gsap.timeline({
-        scrollTrigger: {
-            trigger: ".part2",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            markers: true
-        }
-        }).fromTo(
-            '.sagak',
-            { backgroundColor: 'orange' },
-            { backgroundColor: 'yellow' }
-        ); */  //fromTo 예시
-    
-    
-    </script>
-     -->
+
 
      
 </body>

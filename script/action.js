@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 );
 
-
+//webmain 목업 효과
     $('.notebook .monitor').on('mouseenter', function() {
         var $img = $(this).find('.webcapture');
         var monitorH = $(this).height();
@@ -39,6 +39,9 @@ $(document).ready(function(){
         $(this).find('.webcapture').css('top', '0');
     });
     
+
+
+//#home 애니메이션 
    var currentAngle = 0;
     var isReady = false;
 
@@ -91,6 +94,19 @@ $(document).ready(function(){
     //         $repeatTop.removeClass('fixed');
     //     }
     // });
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     
 });
