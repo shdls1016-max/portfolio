@@ -226,24 +226,30 @@ opacity: 0;}
 
 
 /* appmain */
-#appmain{width: 100%; position: relative; background: lightblue;} 
+#appmain{width: 100%; position: relative;} 
 .app2mockup{display: flex; width: 33.33vw; height: 82.77vh; position: absolute; top: 14%; left: 50%; transform: translateX(-50%);  justify-content: space-between;} 
 .app2mockup .routeyL{width: 48%; height: 90%; position: relative;} 
 .app2mockup .routeyL > img{width: 100%; height: 100%; object-fit: contain; object-position: center top;} 
-.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1;
-height: 55%; width: 120%;}
-.app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
+.app2mockup .routeyL .routeyhover{position: absolute; top: 5%; left: 90%; z-index: -1; 
+height: 55%; width: 240%; perspective: 2000px; }
+/* .app2mockup .routeyhover .routeybg{height: 100%; width: 120%; }
 .app2mockup .routeyhover .routeybg img{width: 100%; height: 100%;}
+ */
+
+.app2mockup .routeyL .routeyhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to right, #0B91EA, #3AA6EE); position: absolute; top: 0%; left: 0; clip-path: polygon(0 0%, 100% 5%, 99% 100%, 0 100%); transform: rotate(-1deg);}
+
+
+
 
 .app2mockup .dentalR{width: 48%; height: 90%; transform: translateY(11%);} 
 .app2mockup .dentalR > img{width: 100%; height: 100%; object-fit: contain; object-position:bottom center;}
-.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -270%; z-index: -1;
-height: 55%;}
-.app2mockup .dentalhover .dentalbg{width: 120%; height: 100%;}
-.app2mockup .dentalhover .dentalbg img{width: 100%; height: 100%;}
+.app2mockup .dentalR .dentalhover{position: absolute; bottom: 5%; /* right: 100%; */ left: -220%; z-index: -1;
+height: 55%; width: 240%;}
 
- .routeyhover .intro{top: 7%;  right: 5%; transform: skewX(2deg);}
- .dentalhover .intro{bottom: 7%;  left: 5%; transform: skewX(-4deg);}
+.app2mockup .dentalR .dentalhover .bgtest{height: 100%; width: 100%; background: linear-gradient(to left, #6192DA, #7FA7E1); position: absolute; top: 0%; left: 0; clip-path: polygon(0 3%, 100% 0%, 100% 100%, 1% 98%); transform: rotate(1deg);}
+
+ .routeyhover .intro{top: 7%;  right: 5%; transform: skewY(1deg) rotateY(-10deg);  transform-origin: right; }
+ .dentalhover .intro{bottom: 7%;  left: 5%; transform:skewY(1deg); transform-origin: left;}
 
 #appmain .intro{display: flex; flex-direction: column; position: absolute;}
 #appmain .intro{font-size: 4em; font-weight: 500; color: #fff;}
