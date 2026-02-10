@@ -273,52 +273,51 @@ position: relative; z-index: 2;}
 
 
 /* appsub 초기 숨김 */
-#appsub {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 9999;
+#appsub {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 9999; opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .3s ease; overflow-y: auto;
 }
 
-#appsub.active {display: block;}
+#appsub.active {display: block; opacity: 1; pointer-events: auto; visibility: visible;}
 
-/* teamApp li 숨김 */
-#teamApp li {display: none;}
-
-#teamApp li.active {display: block;}
-
-/* indiApp 초기 숨김 */
-#indiApp {display: none;}
-
-#indiApp.active {display: block;}
-
+#indiApp.active {display: flex;} 
 /* backToMain 버튼 스타일 (웹섹션과 통일) */
 .backToMain {display: inline-block; padding: 10px 20px; cursor: pointer;
     /* 원하는 스타일 추가 */}
 
 
+#appsub > * {display: none;}
+#appsub > *.active {display: block; }
+
+#indiApp.active {display: flex;}
+
+/* 스크롤 잠금 */
+body.appsub-open {overflow: hidden;}
 
 
 
 
-#indiApp{width: 100%; display: flex;}
+
+#indiApp{width: 100%; display: flex; flex-direction: row;}
 #indiApp .left{width: 38.5vw; height: 100vh; 
-background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden;}
-#indiApp .left{display: flex; padding-left: 2%; padding-right: 4%; padding-top: 2%; box-sizing: border-box;}
+background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden; display: flex; padding: 2% 4% 0 2%; box-sizing: border-box;}
 #indiApp .left .flowdesign{}
 #indiApp .left .flowdesign li{margin-bottom: 10px;}
 #indiApp .left .flowdesign li img{width: 94%; border-radius: 10px;}
 
+#indiApp .right{background:lightblue; flex-grow: 1;}
 #indiApp .right a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.54vw; margin-top: 8.88vh;
 border-left: 5px solid #6192da; }
 #indiApp .right a span:first-of-type{font-size: 4em; font-weight: 500; }
 #indiApp .right a span:last-of-type{font-size: 1.8em; font-weight: 400; }
-#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw;}
+#indiApp .right .content{margin-top: 4.44vh; margin-left: 3.54vw; display: flex;}
 #indiApp .right .content .function{}
 #indiApp .right .content .function li{width: 15.72vw; padding: 2em 3em; background:rgba(97,146,218,0.2); border-radius: 4px; margin-bottom: 4.44vh;}
 #indiApp .right .content .function li .h{color: #555; font-size: 1.8em; font-weight: 500; line-height: 1.2; margin-bottom: 7px;}
 #indiApp .right .content .function li .p{font-size: 2em; line-height: 1.4;}
 
-#indiApp .right .content figure{position: relative; padding-right: 3.54vw;}
-#indiApp .right .content figure img{height: 63.33vh; width: auto;}
+#indiApp .right .content figure{position: relative; margin-right: 3.54vw; border: 1px solid red; display: inline-block; }
+#indiApp .right .content figure img{height: 63.33vh; width: auto; display: block;}
 #indiApp .right .content figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; background: red; }
+font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; background: yellow; }
 
 
 /* appsub */
