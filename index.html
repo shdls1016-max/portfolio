@@ -436,9 +436,12 @@
                 </figure> 
             </div> 
 
+        </section>
+        
+        
+    </div>
 
-
-            <section id="appsub">
+      <section id="appsub">
                 <div id="indiApp">
                     <div class="left">
                         <ul class="flowdesign">
@@ -499,30 +502,68 @@
             
                 <ul id="teamApp">
                     <li id="partTable">
+                        <div class="content">
+                            <!-- 여기에 partTable 콘텐츠 -->
+                            <h2>TEAM PROJECT - 역할분담표</h2>
+                            <p>팀 프로젝트 내용...</p>
+                        </div>
+                        <a href="#appmain" class="backToMain">
+                            <span>ROUTEY</span>
+                            <span>TEAM PROJECT</span>
+                        </a>
                         <div class="btn">
                             <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
                             <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </li>
                     <li id="partMe">
+                         <div class="content">
+                            <!-- partMe 콘텐츠 -->
+                            <h2>내 담당 파트</h2>
+                        </div>
+                        <a href="#appmain" class="backToMain">
+                            <span>ROUTEY</span>
+                            <span>TEAM PROJECT</span>
+                        </a>
                         <div class="btn">
                             <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
                             <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </li>
                     <li id="partA">
+                         <div class="content">
+                            <h2>내 담당 파트</h2>
+                        </div>
+                        <a href="#appmain" class="backToMain">
+                            <span>ROUTEY</span>
+                            <span>TEAM PROJECT</span>
+                        </a>
                         <div class="btn">
                             <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
                             <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </li>
                     <li id="partB">
+                         <div class="content">
+                            <h2>내 담당 파트</h2>
+                        </div>
+                        <a href="#appmain" class="backToMain">
+                            <span>ROUTEY</span>
+                            <span>TEAM PROJECT</span>
+                        </a>
                         <div class="btn">
                             <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
                             <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
                         </div>
                     </li>
                     <li id="partC">
+                         <div class="content">
+                            <h2>내 담당 파트</h2>
+                        </div>
+                        <a href="#appmain" class="backToMain">
+                            <span>ROUTEY</span>
+                            <span>TEAM PROJECT</span>
+                        </a>
                         <div class="btn">
                             <a class="prev"><img src="images/Chevronleft.png" alt="왼쪽이동버튼"></a>
                             <a class="next"><img src="images/Chevronright.png" alt="오른쪽이동버튼"></a>
@@ -530,10 +571,6 @@
                     </li>
                 </ul>
             </section>
-        </section>
-        
-        
-    </div>
 
 
 
@@ -715,13 +752,13 @@ onLeave: function (index, nextIndex, direction) {
     // fullpage 잠금
     $.fn.fullpage.setAllowScrolling(false);
     $.fn.fullpage.setKeyboardScrolling(false);
-    return false; 
   });
 
 
   /* =========================
      TEAM PROJECT 내부 li 이동
   ========================= */
+  // 다음 버튼
   $('#teamApp').on('click', '.next', function(){
     const $current = $(this).closest('li');
     const $next = $current.next('li');
@@ -729,6 +766,17 @@ onLeave: function (index, nextIndex, direction) {
     if($next.length){
       $('#teamApp li').removeClass('active');
       $next.addClass('active');
+    }
+  });
+
+  // 이전 버튼 (새로 추가)
+  $('#teamApp').on('click', '.prev', function(){
+    const $current = $(this).closest('li');
+    const $prev = $current.prev('li');
+
+    if($prev.length){
+      $('#teamApp li').removeClass('active');
+      $prev.addClass('active');
     }
   });
 

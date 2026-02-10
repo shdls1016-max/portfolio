@@ -272,6 +272,26 @@ position: relative; z-index: 2;}
 
 
 
+/* appsub 초기 숨김 */
+#appsub {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 9999;
+}
+
+#appsub.active {display: block;}
+
+/* teamApp li 숨김 */
+#teamApp li {display: none;}
+
+#teamApp li.active {display: block;}
+
+/* indiApp 초기 숨김 */
+#indiApp {display: none;}
+
+#indiApp.active {display: block;}
+
+/* backToMain 버튼 스타일 (웹섹션과 통일) */
+.backToMain {display: inline-block; padding: 10px 20px; cursor: pointer;
+    /* 원하는 스타일 추가 */}
+
 
 
 
