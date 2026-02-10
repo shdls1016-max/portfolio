@@ -128,7 +128,7 @@ inset 2px 2px 1px rgba(17,17,17,0.08),
 backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);}
 
 .notebook {position: absolute; width: 710px; height: 510px; left: 57.5%; top:46%; transform: translate(-50%,-50%); perspective: 1500px;}
-.notebook:before {content:""; width: 120px; height: 20px; background: #000; top: 50px; left: 48%; transform: translate(-50%,0) rotateY(-45deg); position: absolute; border-radius: 5px; z-index: 3; }
+.notebook:before {content:""; width: 120px; height: 20px; background: #000; top: 52px; left: 48%; transform: translate(-50%,0) rotateY(-45deg); position: absolute; border-radius: 5px; z-index: 3; }
 .notebook .monitor {position: absolute; /* background: red;  */width: 100%; height: 100%; left: -3.4%; top:12%; transform: rotateY(-18deg) skewY(-5deg); overflow: hidden; transform-origin: top; border-radius: 10px 10px 0 0 ;}
 .notebook .monitor .webcapture {position: absolute; top: -1px; left: -1px; transition: 3s;}
 .notebook .keyboard {position: absolute; bottom: -119px; right: 0;}
@@ -160,6 +160,21 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 
 
 /* web sub */
+/* websub 열렸을 때 공통 제어 */
+body.websub-open .nav,
+body.websub-open .copy {
+  opacity: 0;
+  pointer-events: none;   /* ⭐ 마우스 반응 완전 차단 */
+  visibility: hidden;     /* 접근성 + 포커스 차단 */
+}
+
+/* 혹시 transition 쓰고 싶으면 */
+.nav,
+.copy {
+  transition: opacity 0.3s ease;
+}
+
+
 .websub {position: absolute; top: 0; background: #fff; width: 100%; z-index: 10;}
 .websub > li{width: 100%; overflow: hidden; display: flex; gap: 13.33vw; align-items: center;}
 .websub #sub1 {}
@@ -188,12 +203,12 @@ opacity: 0;}
 .websub > li > .right .btn > a{width: 6em; height: auto; cursor: pointer;}
 .websub > li > .right .btn > a > img{width: 100%; height: 100%;}
 
-.websub > li#sub1 > .right .rightTop{background: url('/images/sub1titlebg.jpg');}
-.websub > li#sub2 > .right .rightTop{background: url('/images/sub2titlebg.jpg');}
-.websub > li#sub3 > .right .rightTop{background: url('/images/sub3titlebg.jpg');}
-.websub > li#sub4 > .right .rightTop{background: url('/images/sub4titlebg.jpg'); }
+.websub > li#sub1 > .right .rightTop{background: url('../images/sub1titlebg.jpg');}
+.websub > li#sub2 > .right .rightTop{background: url('../images/sub2titlebg.jpg');}
+.websub > li#sub3 > .right .rightTop{background: url('../images/sub3titlebg.jpg');}
+.websub > li#sub4 > .right .rightTop{background: url('../images/sub4titlebg.jpg'); }
 
-#webmain .swiper {position: relative; border: 1px solid red; z-index: 10 !important; background: #fff; height: 100vh; display: none; }
+#webmain .swiper {position: relative; z-index: 10 !important; background: #fff; height: 100vh; display: none; }
 .websub {
     display: flex; /* Swiper 내부에서는 자동으로 처리되지만 명시적 확인 */
     padding: 0;

@@ -588,7 +588,9 @@ onLeave: function (index, nextIndex, direction) {
   });
 </script>
 
-     <script>
+    <script>
+
+
 
         $(document).ready(function () {
 
@@ -612,11 +614,17 @@ onLeave: function (index, nextIndex, direction) {
             e.preventDefault();
 
             const idx = $(this).index('.mini');
-
+            $('body').addClass('websub-open');
             $('.mySwiper').fadeIn();
             $('.notebook').hide();
 
             swiper.slideToLoop(idx, 0); // ⭐ loop 환경 대응
+
+              // ✅ fullpage 완전 잠금
+            $.fn.fullpage.setAllowScrolling(false);
+            $.fn.fullpage.setKeyboardScrolling(false);
+
+        
         });
 
 
@@ -640,10 +648,17 @@ onLeave: function (index, nextIndex, direction) {
             4. BACK 버튼 → 스와이퍼 닫기
         =============================== */
         $(document).on('click', '.swiper-slide figure a[href="#webmain"]', function (e) {
-            e.preventDefault();
+        e.preventDefault();
 
-            $('.mySwiper').fadeOut();
-            $('.notebook').fadeIn();
+        $('.mySwiper').fadeOut();
+        $('.notebook').fadeIn();
+
+        // fullpage 복구
+        $.fn.fullpage.setAllowScrolling(true);
+        $.fn.fullpage.setKeyboardScrolling(true);
+
+        // nav / copy 복구
+        $('body').removeClass('websub-open');
         });
 
         });
