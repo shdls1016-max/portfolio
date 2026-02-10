@@ -518,54 +518,75 @@
     <script src="script/jquery.fullpage.min.js"></script>
     <script src="script/action.js"></script>
 
-     <script>
-        
-        $('#fullpage').fullpage({
-            anchors:['tohome','toprofile','towebmain','toappmain'],
+ <script>
+  $('#fullpage').fullpage({
+    anchors: ['tohome', 'toprofile', 'towebmain', 'toappmain'],
 
+    /* =========================
+       섹션 도착 후 (상태 정리)
+    ========================= */
+    afterLoad: function (anchorLink, index) {
+      $('.nav li a').removeClass('present');
+      $('.nav li').eq(index - 1).find('a').addClass('present');
 
-            // afterLoad: function(anchorLink, index) {
-            //     if (index >= 2) {
-            //         $('.copy').addClass('active');
-            //     } 
-            // },
-            onLeave: function(index, nextIndex, direction) {
-                $('.gnb li a').css({color:'#000'});
+      // HOME 도착 시 색상만 정리
+      if (index === 1) {
+        $('.nav').removeClass('bgbk');
+        $('.copy').css('color', '');
+      }
 
-                
-                if (nextIndex == 3) {
-                    $('.copy').css({color:'#469ECE'});
-                    $('.nav li a').css({color:'#eee'});
-                    $('.nav li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
-                } else {
-                    $('.copy').css({color:''});
-                    $('.nav li a').css({color:''});
-                    $('.nav li').eq(nextIndex-1).find('a').css({color:''})
-                }
-                
-                if (nextIndex >= 2) {
-                    $('.nav').addClass('active');
-                    $('.copy').addClass('active');
-                    $('.homeImgs').addClass('active')
+      // WEB
+      if (index === 3) {
+        $('.nav').addClass('bgbk');
+        $('.copy').css('color', '#fff');
+      }
+    },
 
-                    $('.nav li a').css({color:'#676767'});
-                    $('.nav li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
-                    console.log(nextIndex)
-                } else {
-                    $('.nav').removeClass('active');
-                    $('.copy').removeClass('active');
-                    $('.homeImgs').removeClass('active')
-                }
+    /* =========================
+       섹션 떠날 때 (HOME 제어)
+    ========================= */
+onLeave: function (index, nextIndex, direction) {
 
-                if (nextIndex == 3) {
-                    $('.nav li a').css({color:'#eee'});
-                    $('.gnb li').eq(nextIndex-1).find('a').css({color:'#469ECE'})
-                } 
-            }
-        })
-     
-     </script>
+  /* HOME → 다른 섹션 */
+  if (index === 1 && nextIndex !== 1) {
+    $('.homeImgs').addClass('active');
+    $('.copy').addClass('active');
+    $('.nav').addClass('active');
+  }
 
+  /* 다른 섹션 → HOME */
+  if (nextIndex === 1) {
+
+    // copy / nav 는 즉시
+    $('.copy').removeClass('active');
+    $('.nav').removeClass('active');
+
+    // 기본 delay
+    var delay = 250;
+
+    // 어디서 돌아오느냐에 따라 조절
+    if (index === 2) {        // PROFILE → HOME
+      delay = 200;
+    } else if (index === 3) { // WEB → HOME
+      delay = 300;
+    } else if (index === 4) { // APP → HOME
+      delay = 360;
+    }
+
+    setTimeout(function () {
+      $('.homeImgs').removeClass('active');
+    }, delay);
+  }
+
+  /* WEB 떠날 때 원복 */
+  if (index === 3 && nextIndex !== 3) {
+    $('.nav').removeClass('bgbk');
+    $('.copy').css('color', '');
+  }
+}
+
+  });
+</script>
 
      <script>
 

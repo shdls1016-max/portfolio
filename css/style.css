@@ -7,29 +7,39 @@ html, body{width: 100%;}
 body{font-size: 10px;}
 
 
-.present{color: #469ECE;}
-.nav.bgbk ul li a.present{color: #469ECE;}
-.nav {display: flex; z-index: 30; position: relative;}
-.nav ul{display: flex;  position: absolute; left: 50%; transform: translateX(-50%); transition: 0.5s; }
-.nav ul li a{padding: 18px 20px; display: inline-block; font-size: 2em;  font-weight: 300; box-sizing: border-box;}
+/* 기본 */
+.present {color: #469ECE;}
 
-.nav.bgbk ul li a{color: #eaeaea;}
+.nav {display: flex; position: absolute; top: 0; width: 100%; z-index: 30;}
 
-.nav ul:hover li a{color: #676767;}
-.nav.bgbk ul:hover li a{color: #e0e0e0;}
-.nav ul:hover li a.present{color: #469ECE;}  /* hover햇을때 현재페이지도 그레이되게 하고 싶으면 이 줄 삭제하기 */
-.nav ul li:hover a{color: #469ECE; /* font-weight: 500; */}
-.nav.bgbk ul li:hover a{color: #469ece;}
+.nav ul {display: flex; position: absolute; left: 50%; transform: translateX(-50%); transition: 0.5s;
+}
+
+.nav ul li a {padding: 18px 20px; display: inline-block; font-size: 2em; font-weight: 300; box-sizing: border-box; color: #676767; transition: color 0.3s;
+}
+
+/* active상태 */
+.nav.active {justify-content: flex-end;}
+
+.nav.active ul {left: 100%; transform: translateX(-100%);
+}
+
+/* 어두운배경 */
+.nav.bgbk ul li a {color: #eaeaea;}
 
 
-.nav{display: flex; position: absolute; top: 0; width: 100%;}
-.nav ul li{}
+/* hover 제어 (핵심) */
+/* 일반 메뉴 hover */
+.nav ul li:hover a {color: #111;}
 
-.nav.active {justify-content: end;}
-.nav.active ul{left: 100%;transform: translateX(-100%);}
+/* 어두운 배경 hover */
+.nav.bgbk ul li:hover a {color: #fff;}
 
+/* 현재 페이지(present)는 hover돼도 유지 */
+.nav ul li a.present {color: #469ECE;}
 
-.nav ul li a:hover {color:#000 !important} 
+.nav ul li:hover a.present {color: #469ECE;}
+
 
 .copy{font-size: 10em; font-weight: 600; line-height: 1.2; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; text-align: center; z-index: 5;}
 
@@ -69,7 +79,7 @@ body > .copy p:nth-child(2) {animation: copyText2 2s forwards;}
 .homeImgs.active {opacity: 0; pointer-events: none;}
 .homeImgs .compass1{width: 100%; position: absolute; top: 0; left: 0; z-index: 1; height: auto;}
 .homeImgs .compass1 > img{width: 100%;}
-.homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 5%; left: 50%; transform:translateX(-50%); z-index: 2; transition: .1s;}
+.homeImgs .compass2{width: 49.7em; height: auto; position: absolute; top: 11%; left: 50%; transform:translateX(-50%); z-index: 2; transition: .1s;}
 .homeImgs .compass2 > img{width: 100%; height: auto; display: block;}
 .homeImgs .compass3{width: 100%; height: auto;  position: absolute; left: 50px; top: 45px;}
 .homeImgs .compass3 > img{display: block; width: 100%;}
