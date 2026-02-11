@@ -199,9 +199,9 @@ opacity: 0;}
 /* .websub > li > .right .rightBottom .line > div{display: flex; flex-direction: column; row-gap:0.5em;} */
 .websub > li > .right .rightBottom .line .color figure{width: 3.33em; height: auto;}
 .websub > li > .right .rightBottom .line .color figure img{width: 100%; height: 100%; }
-.websub > li > .right .btn{display: flex; text-align: right; justify-content: end;}
-.websub > li > .right .btn > a{width: 6em; height: auto; cursor: pointer;}
-.websub > li > .right .btn > a > img{width: 100%; height: 100%;}
+.websub > li > .right > .btn{display: flex; text-align: right; justify-content: end;}
+.websub > li > .right > .btn > a{width: 6em; height: auto; cursor: pointer;}
+.websub > li > .right > .btn > a > img{width: 100%; height: 100%;}
 
 .websub > li#sub1 > .right .rightTop{background: url('../images/sub1titlebg.jpg');}
 .websub > li#sub2 > .right .rightTop{background: url('../images/sub2titlebg.jpg');}
@@ -272,25 +272,134 @@ position: relative; z-index: 2;}
 
 
 
-/* appsub 초기 숨김 */
-#appsub {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 9999; opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .3s ease; overflow-y: auto; inset: 0;
+/* ===================================
+   appsub 기본 설정
+=================================== */
+#appsub {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
 }
 
-#appsub.active {display: block; opacity: 1; pointer-events: auto; visibility: visible;}
+#appsub.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
 
-#indiApp.active {display: flex; flex-direction: row;} 
-/* backToMain 버튼 스타일 (웹섹션과 통일) */
-.backToMain {display: inline-block; padding: 10px 20px; cursor: pointer;
-    /* 원하는 스타일 추가 */}
+
+/* ===================================
+   appsub 자식 요소 제어
+=================================== */
+/* 기본: 모두 숨김 */
+#appsub > * {
+    display: none;
+}
+
+/* ⭐ active 클래스 CSS 삭제 - JavaScript에서 show()로 제어 */
+
+/* ===================================
+   teamApp 전용
+=================================== */
+#teamApp {
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+
+#teamApp.active {
+    display: block;
+}
+
+#teamApp li {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    /* padding: 5vh 5vw; */
+    box-sizing: border-box;
+}
+
+#teamApp li.active {
+    display: block;
+}
+
+/* ===================================
+   teamApp 내부 스타일 (⭐ 추가)
+=================================== */
+#teamApp li .content {
+    margin-bottom: 3vh;
+}
+
+#teamApp li .content h2 {
+    font-size: 4em;
+    margin-bottom: 2vh;
+}
+
+#teamApp li .content p {
+    font-size: 2em;
+    line-height: 1.6;
+}
+
+#teamApp li .backToMain {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    padding-left: 1.6em;
+    margin-left: 3.4vw;
+    margin-top: 5vh;
+    border-left: 5px solid #0B91EA;
+}
+
+#teamApp li .backToMain span:first-of-type {
+    font-size: 4em;
+    font-weight: 500;
+}
+
+#teamApp li .backToMain span:last-of-type {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+#teamApp li .btn {position: fixed; bottom: 5vh; right: 5vw; display: flex; gap: 2em;}
+#teamApp li .btn a {width: 6em; height: auto; cursor: pointer;}
+#teamApp li .btn a img {width: 100%; height: 100%;}
 
 
-#appsub > * {display: none;}
-#appsub > *.active {display: block; }
 
-#indiApp.active {display: flex;}
+/* ===================================
+   indiApp 전용 (flex 필요)
+=================================== */
+#indiApp.active {
+    display: flex !important;
+    flex-direction: row;
+}
 
-/* 스크롤 잠금 */
-body.appsub-open {overflow: hidden;}
+/* ===================================
+   스크롤 잠금
+=================================== */
+body.appsub-open {
+    overflow: hidden;
+}
+
+/* ===================================
+   backToMain 버튼
+=================================== */
+.backToMain {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 
 
 /* ===================================
@@ -323,8 +432,19 @@ body.appsub-open {overflow: hidden;}
 .routeyhover .intro,
 .dentalhover .intro {
     opacity: 0;
+    pointer-events: auto !important;
     transition: opacity 0.4s ease 0.3s;
+    position: relative;
+    z-index: 20;
 }
+.routeyhover .intro a,
+.dentalhover .intro a {
+    pointer-events: auto !important;
+    position: relative;
+    cursor: pointer;
+    z-index: 21;
+}
+
 
 
 /* ===================================
@@ -401,12 +521,12 @@ body.appsub-open {overflow: hidden;}
 =================================== */
 .closeBtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 15px;
     width: 30px;
     height: 30px;
     background: rgba(255, 255, 255, 0.2);
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     color: #fff;
     font-size: 20px;
     line-height: 1;
@@ -431,7 +551,7 @@ body.appsub-open {overflow: hidden;}
 
 /* dental 쪽 닫기 버튼 위치 조정 */
 .dentalR .closeBtn {
-    left: 10px;
+    left: 15px;
     right: auto;
 }
 
@@ -478,3 +598,37 @@ font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; opacity: 0; color: 
 #indiApp .right .content .indication li:nth-child(2){top: 46%;}
 #indiApp .right .content .indication li:nth-child(3){bottom: 10%; left: 0;}
 
+
+/* teamApp */
+/* 위치이동되는 타이틀 자리는 358행~ 에서 잡음-패딩,마진- */
+/* #partTable{}
+#partTable .tableAbtn{display: flex; flex-direction: row;}
+#partTable .tableAbtn .table{display: flex; flex-direction: column;}
+#partTable .tableAbtn .table .illust{display: flex;}
+#partTable .tableAbtn .table .illust > a{width: 12em; height: 12em; display: flex; align-items: center; justify-content: center; background: #0B91EA; border-radius: 50%; position: relative;}
+#partTable .tableAbtn .table .illust > a > img{width: 83.33%; height: auto; background-size: cover; background-position: center; border-radius: 50%;}
+#partTable .tableAbtn .table .illust > a::before{content: ''; background: rgba(255, 255, 255, 0.6); width: 83.33%; height: 83.33%; border-radius: 50%; position: absolute;}
+#partTable .tableAbtn .table .illust > a > span{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 1.8em; font-weight: 500;}
+#partTable .tableAbtn .table .bottom{}
+#partTable .tableAbtn .table .bottom .blue{}
+#partTable .tableAbtn .table .bottom .gray{}
+ */
+
+#partTable{}
+.tableAbtn{display: flex; flex-direction: row; align-items: end; justify-content: space-between; gap: 8em;}
+.tableAbtn .part-wrap {/* width: 100%; max-width: 1200px;  margin: 0 auto;*/ flex-grow: 1; margin-left: 3.75vw; margin-top: 6vh;}
+.tableAbtn .part-wrap .part-header {display: grid; grid-template-columns: 180px repeat(4, 1fr); align-items: center; margin-bottom: 20px;}
+.tableAbtn .teambtn{margin-right: 8em;}
+.tableAbtn .teambtn a{width: 6em; height: auto; cursor: pointer; display: inline-block;}
+.tableAbtn .teambtn a img{width: 100%; height: 100%;}
+
+.part-header .member {display: flex; flex-direction: column; align-items: center; gap: 8px;  position: relative;}
+.part-header .member::before{content: ''; width: 9em; height: 9em; border-radius: 50%; background: rgba(255, 255, 255, 0.6); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.part-header .member img {width: 9em; height: 9em; border-radius: 50%; object-fit: cover; border: 0.8em solid #0B91EA;}
+.part-header .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+.part-grid {display: grid; grid-template-columns: 180px repeat(4, 1fr); /* border-top: 1px solid #ddd; */}
+.part-grid > div {padding: 1.6em 12px; /* border-bottom: 1px solid #ddd; */ font-size: 2.2em; font-weight: 400; line-height: 1.5; display: flex; align-items: center; justify-content: center; text-align: center; background: #FAFAFA;}
+.part-grid .label {background: #0B91EA; color: #fff; font-weight: 400;}
+
+#partTable .teaminfo{font-size: 1.8em; color: #555; margin-top: 2em; display: block; text-align: center;}

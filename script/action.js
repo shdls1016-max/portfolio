@@ -1,115 +1,378 @@
 /* html에서 script를 html최하단이 아닌 곳에 연결했을때 사용(ready()) */
 $(document).ready(function(){
     
-    //나침반(.mini) hover시 길이 늘어나고 사이트명(.name)도 보이게
-    $('.mini').mouseover(function(){
-        $(this).addClass('on')
-    })
-    $('.mini').mouseout(function(){
-        $(this).removeClass('on')
-    })
+  /* ===============================
+     fullpage 초기화
+  =============================== */
+  $('#fullpage').fullpage({
+    anchors: ['tohome', 'toprofile', 'towebmain', 'toappmain'],
 
+    afterLoad: function (anchorLink, index) {
+      $('.nav li a').removeClass('present');
+      $('.nav li').eq(index - 1).find('a').addClass('present');
 
-    //나침반 hover 하면 배경목업 변경되게
-    $('.mini').hover(function(){
-        if($(this).hasClass('dong')){
-            $('.webcapture').attr('src','images/dongkook.jpg' )
-        }
-        if($(this).hasClass('book')){
-            $('.webcapture').attr('src','images/library.jpg' )
-        }
-        if($(this).hasClass('dl')){
-            $('.webcapture').attr('src','images/dl.jpg')
-        }
-        if($(this).hasClass('dive')){
-            $('.webcapture').attr('src','images/underwaterdive.jpg')
-        }
+      if (index === 1) {
+        $('.nav').removeClass('bgbk');
+        $('.copy').css('color', '');
+      }
+
+      if (index === 3) {
+        $('.nav').addClass('bgbk');
+        $('.copy').css('color', '#fff');
+      }
+    },
+
+    onLeave: function (index, nextIndex, direction) {
+      if (index === 1 && nextIndex !== 1) {
+        $('.homeImgs').addClass('active');
+        $('.copy').addClass('active');
+        $('.nav').addClass('active');
+      }
+
+      if (nextIndex === 1) {
+        $('.copy').removeClass('active');
+        $('.nav').removeClass('active');
+
+        var delay = 250;
+        if (index === 2) delay = 200;
+        else if (index === 3) delay = 300;
+        else if (index === 4) delay = 360;
+
+        setTimeout(function () {
+          $('.homeImgs').removeClass('active');
+        }, delay);
+      }
+
+      if (index === 3 && nextIndex !== 3) {
+        $('.nav').removeClass('bgbk');
+        $('.copy').css('color', '');
+      }
     }
+  });
 
 
-);
+  /* ===============================
+     Swiper 초기화
+  =============================== */
+  const swiper = new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      speed: 600,
+      allowTouchMove: true
+  });
 
-//webmain 목업 효과
-    $('.notebook .monitor').on('mouseenter', function() {
-        var $img = $(this).find('.webcapture');
-        var monitorH = $(this).height();
-        var imgH = $img.height();
-        $img.css('top', -(imgH - monitorH) + 'px');
-    }).on('mouseleave', function() {
-        $(this).find('.webcapture').css('top', '0');
-    });
+
+  /* ===============================
+     mini 클릭 → 슬라이드 이동
+  =============================== */
+  $('.mini').on('click', function (e) {
+      e.preventDefault();
+
+      const idx = $(this).index('.mini');
+      $('body').addClass('websub-open');
+      $('.mySwiper').fadeIn();
+      $('.notebook').hide();
+
+      swiper.slideToLoop(idx, 0);
+
+      $.fn.fullpage.setAllowScrolling(false);
+      $.fn.fullpage.setKeyboardScrolling(false);
+  });
+
+
+  /* ===============================
+     슬라이드 버튼
+  =============================== */
+  $(document).on('click', '.btn a img[alt="오른쪽이동버튼"]', function (e) {
+      e.preventDefault();
+      swiper.slideNext();
+  });
+
+  $(document).on('click', '.btn a img[alt="왼쪽이동버튼"]', function (e) {
+      e.preventDefault();
+      swiper.slidePrev();
+  });
+
+
+  /* ===============================
+     BACK 버튼 → 스와이퍼 닫기
+  =============================== */
+  $(document).on('click', '.swiper-slide figure a[href="#webmain"]', function (e) {
+    e.preventDefault();
+
+    $('.mySwiper').fadeOut();
+    $('.notebook').fadeIn();
+
+    $.fn.fullpage.setAllowScrolling(true);
+    $.fn.fullpage.setKeyboardScrolling(true);
+
+    $('body').removeClass('websub-open');
+  });
+
+
+  /* ===================================
+     routeyL 클릭
+  =================================== */
+  $('.app2mockup .routeyL').on('click', function(e){
+    if($(e.target).closest('.intro a').length) return;
+    if($(e.target).hasClass('closeBtn')) return;
     
-
-
-//#home 애니메이션 
-   var currentAngle = 0;
-    var isReady = false;
-
-    // 초기 5바퀴 회전 (1800도)
-    $('.compass2').css({
-        transition: 'transform 1.5s ease-in-out',
-        transform: 'translateX(-50%) rotate(900deg)'
-    });
-
-    // 2초 후 마우스 반응 시작
-    setTimeout(function() {
-        currentAngle = 1800;
-        isReady = true;
-        $('.compass2').css('transition', 'none');
-    }, 2000);
-
-    $(document).on('mousemove', function(e) {
-        if (!isReady) return;
-
-        var $imgs = $('.homeImgs');
-        var offset = $imgs.offset();
-        var centerX = offset.left + $imgs.outerWidth() / 2;
-        var centerY = offset.top + $imgs.outerHeight() / 2;
-
-        var targetAngle = Math.atan2(e.pageY - centerY, e.pageX - centerX) * (180 / Math.PI) + 90;
-
-        var diff = targetAngle - (currentAngle % 360);
-        if (diff > 180) diff -= 360;
-        if (diff < -180) diff += 360;
-
-        currentAngle += diff;
-
-        $('.compass2').css('transform', 'translateX(-50%) rotate(' + currentAngle + 'deg)');
-    });
-
-
-
-    // $(window).on('scroll', function() {
-    //     var $repeatTop = $('#profile .repeatTop');
-    //     var $profile = $('#profile');
-    //     var profileTop = $profile.offset().top;
-    //     var scrollTop = $(window).scrollTop();
-
-    //     if (scrollTop >= profileTop) {
-    //         if (!$repeatTop.hasClass('fixed')) {
-    //             $repeatTop.addClass('fixed');
-    //             $('#home .copy').hide();
-    //         }
-    //     } else {
-    //         $repeatTop.removeClass('fixed');
-    //     }
-    // });
-
-
-
-
-
-
-
-
-
-
-
-
+    e.stopPropagation();
     
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $('.dentalR').removeClass('active');
+    }
+  });
 
+
+  /* ===================================
+     dentalR 클릭
+  =================================== */
+  $('.app2mockup .dentalR').on('click', function(e){
+    if($(e.target).closest('.intro a').length) return;
+    if($(e.target).hasClass('closeBtn')) return;
     
+    e.stopPropagation();
+    
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $('.routeyL').removeClass('active');
+    }
+  });
+
+
+  /* ===================================
+     닫기 버튼
+  =================================== */
+  $('.closeBtn').on('click', function(e){
+    e.stopPropagation();
+    $(this).closest('.routeyL, .dentalR').removeClass('active hover');
+  });
+
+
+  /* ===================================
+     hover
+  =================================== */
+  $('.app2mockup .routeyL').on('mouseenter', function(){
+    if(!$('.routeyL, .dentalR').hasClass('active')){
+      $(this).addClass('hover');
+    }
+  });
+
+  $('.app2mockup .routeyL').on('mouseleave', function(){
+    $(this).removeClass('hover');
+  });
+
+  $('.app2mockup .dentalR').on('mouseenter', function(){
+    if(!$('.routeyL, .dentalR').hasClass('active')){
+      $(this).addClass('hover');
+    }
+  });
+
+  $('.app2mockup .dentalR').on('mouseleave', function(){
+    $(this).removeClass('hover');
+  });
+
+
+  /* ===================================
+     배경 클릭 시 닫기
+  =================================== */
+  $('#appmain').on('click', function(e){
+    if(!$(e.target).closest('.app2mockup figure').length){
+      $('.routeyL, .dentalR').removeClass('active hover');
+    }
+  });
+
+
+  /* ===================================
+     ESC 키로 닫기
+  =================================== */
+  $(document).on('keydown', function(e){
+    if(e.key === 'Escape' && !$('body').hasClass('websub-open') && !$('body').hasClass('appsub-open')){
+      $('.routeyL, .dentalR').removeClass('active hover');
+    }
+  });
+
+
+/* ===================================
+   routey DESIGN PAGE → partTable
+=================================== */
+$(document).on('click', '.routeyhover .intro a', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  console.log('🔵 ROUTEY 클릭됨!');
+  
+  $('.routeyL, .dentalR').removeClass('active hover');
+
+  $('#appsub').addClass('active');
+  $('body').addClass('appsub-open');
+  
+  // ⭐ 강제로 모든 자식 초기화 (removeClass 대신 hide 사용)
+  $('#indiApp').hide().removeClass('active');
+  $('#teamApp').hide().removeClass('active');
+  $('#teamApp li').removeClass('active');
+  
+  // ⭐ teamApp과 partTable만 show + active
+  $('#teamApp').show().addClass('active');
+  $('#partTable').addClass('active');
+
+  console.log('#teamApp display:', $('#teamApp').css('display'));
+  console.log('#indiApp display:', $('#indiApp').css('display'));
+
+  $.fn.fullpage.setAllowScrolling(false);
+  $.fn.fullpage.setKeyboardScrolling(false);
 });
 
 
+/* ===================================
+   dental DESIGN PAGE → indiApp
+=================================== */
+$(document).on('click', '.dentalhover .intro a', function(e){
+  e.preventDefault();
+  e.stopPropagation();
 
+  console.log('🟢 DENTAL 클릭됨!');
+  
+  $('.routeyL, .dentalR').removeClass('active hover');
+
+  $('#appsub').addClass('active');
+  $('body').addClass('appsub-open');
+  
+  // ⭐ 강제로 모든 자식 초기화
+  $('#teamApp').hide().removeClass('active');
+  $('#teamApp li').removeClass('active');
+  $('#indiApp').hide().removeClass('active');
+  
+  // ⭐ indiApp만 show + active
+  $('#indiApp').show().addClass('active');
+
+  console.log('#teamApp display:', $('#teamApp').css('display'));
+  console.log('#indiApp display:', $('#indiApp').css('display'));
+
+  $.fn.fullpage.setAllowScrolling(false);
+  $.fn.fullpage.setKeyboardScrolling(false);
+});
+
+
+  /* =========================
+     TEAM PROJECT 내부 li 이동
+  ========================= */
+  $('#teamApp').on('click', '.next', function(){
+    const $current = $(this).closest('li');
+    const $next = $current.next('li');
+
+    if($next.length){
+      $('#teamApp li').removeClass('active');
+      $next.addClass('active');
+    }
+  });
+
+  $('#teamApp').on('click', '.prev', function(){
+    const $current = $(this).closest('li');
+    const $prev = $current.prev('li');
+
+    if($prev.length){
+      $('#teamApp li').removeClass('active');
+      $prev.addClass('active');
+    }
+  });
+
+
+  /* =========================
+     APP SUB → APP MAIN 복귀
+  ========================= */
+  $(document).on('click', '#appsub .backToMain', function(e){
+    e.preventDefault();
+
+    $('#appsub').removeClass('active');
+    $('#appsub > *').removeClass('active');
+    $('body').removeClass('appsub-open');
+
+    $.fn.fullpage.setAllowScrolling(true);
+    $.fn.fullpage.setKeyboardScrolling(true);
+
+    $.fn.fullpage.moveTo('toappmain');
+  });
+
+
+  /* ===================================
+     기존 action.js 코드
+  =================================== */
+  //나침반(.mini) hover시 길이 늘어나고 사이트명(.name)도 보이게
+  $('.mini').mouseover(function(){
+      $(this).addClass('on')
+  })
+  $('.mini').mouseout(function(){
+      $(this).removeClass('on')
+  })
+
+
+  //나침반 hover 하면 배경목업 변경되게
+  $('.mini').hover(function(){
+      if($(this).hasClass('dong')){
+          $('.webcapture').attr('src','images/dongkook.jpg' )
+      }
+      if($(this).hasClass('book')){
+          $('.webcapture').attr('src','images/library.jpg' )
+      }
+      if($(this).hasClass('dl')){
+          $('.webcapture').attr('src','images/dl.jpg')
+      }
+      if($(this).hasClass('dive')){
+          $('.webcapture').attr('src','images/underwaterdive.jpg')
+      }
+  });
+
+  //webmain 목업 효과
+  $('.notebook .monitor').on('mouseenter', function() {
+      var $img = $(this).find('.webcapture');
+      var monitorH = $(this).height();
+      var imgH = $img.height();
+      $img.css('top', -(imgH - monitorH) + 'px');
+  }).on('mouseleave', function() {
+      $(this).find('.webcapture').css('top', '0');
+  });
+
+
+  //#home 애니메이션 
+  var currentAngle = 0;
+  var isReady = false;
+
+  $('.compass2').css({
+      transition: 'transform 1.5s ease-in-out',
+      transform: 'translateX(-50%) rotate(900deg)'
+  });
+
+  setTimeout(function() {
+      currentAngle = 1800;
+      isReady = true;
+      $('.compass2').css('transition', 'none');
+  }, 2000);
+
+  $(document).on('mousemove', function(e) {
+      if (!isReady) return;
+
+      var $imgs = $('.homeImgs');
+      var offset = $imgs.offset();
+      var centerX = offset.left + $imgs.outerWidth() / 2;
+      var centerY = offset.top + $imgs.outerHeight() / 2;
+
+      var targetAngle = Math.atan2(e.pageY - centerY, e.pageX - centerX) * (180 / Math.PI) + 90;
+
+      var diff = targetAngle - (currentAngle % 360);
+      if (diff > 180) diff -= 360;
+      if (diff < -180) diff += 360;
+
+      currentAngle += diff;
+
+      $('.compass2').css('transform', 'translateX(-50%) rotate(' + currentAngle + 'deg)');
+  });
+
+});
