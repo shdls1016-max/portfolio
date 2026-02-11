@@ -293,7 +293,6 @@ position: relative; z-index: 2;}
 body.appsub-open {overflow: hidden;}
 
 
-/* 시작 */
 /* ===================================
    appmain hover/click 애니메이션
 =================================== */
@@ -324,36 +323,35 @@ body.appsub-open {overflow: hidden;}
 .routeyhover .intro,
 .dentalhover .intro {
     opacity: 0;
-    transition: opacity 0.4s ease 0.3s; /* 배경보다 늦게 나타남 */
+    transition: opacity 0.4s ease 0.3s;
 }
 
 
 /* ===================================
-   hover 시 활성화
+   hover 시 활성화 (.hover 클래스)
 =================================== */
-.app2mockup .routeyL:hover .routeyhover,
-.app2mockup .dentalR:hover .dentalhover {
+.app2mockup .routeyL.hover .routeyhover,
+.app2mockup .dentalR.hover .dentalhover {
     opacity: 1;
     pointer-events: auto;
 }
 
-.app2mockup .routeyL:hover .routeyhover .bgtest,
-.app2mockup .dentalR:hover .dentalhover .bgtest {
+.app2mockup .routeyL.hover .routeyhover .bgtest {
     transform: scaleX(1) rotate(-1deg);
 }
 
-.app2mockup .dentalR:hover .dentalhover .bgtest {
+.app2mockup .dentalR.hover .dentalhover .bgtest {
     transform: scaleX(1) rotate(1deg);
 }
 
-.app2mockup .routeyL:hover .routeyhover .intro,
-.app2mockup .dentalR:hover .dentalhover .intro {
+.app2mockup .routeyL.hover .routeyhover .intro,
+.app2mockup .dentalR.hover .dentalhover .intro {
     opacity: 1;
 }
 
 
 /* ===================================
-클릭 시 활성화 (active 클래스)
+   클릭 시 활성화 (.active 클래스)
 =================================== */
 .app2mockup .routeyL.active .routeyhover,
 .app2mockup .dentalR.active .dentalhover {
@@ -376,16 +374,39 @@ body.appsub-open {overflow: hidden;}
 
 
 /* ===================================
+   닫히는 중 (.closing 클래스) - hover 차단
+=================================== */
+.app2mockup .routeyL.closing .routeyhover,
+.app2mockup .dentalR.closing .dentalhover {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.app2mockup .routeyL.closing .routeyhover .bgtest {
+    transform: scaleX(0) rotate(-1deg) !important;
+}
+
+.app2mockup .dentalR.closing .dentalhover .bgtest {
+    transform: scaleX(0) rotate(1deg) !important;
+}
+
+.app2mockup .routeyL.closing .routeyhover .intro,
+.app2mockup .dentalR.closing .dentalhover .intro {
+    opacity: 0 !important;
+}
+
+
+/* ===================================
    닫기 버튼
 =================================== */
 .closeBtn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
     background: rgba(255, 255, 255, 0.2);
-    /* border: 1px solid #fff; */
+    border: 1px solid #fff;
     color: #fff;
     font-size: 20px;
     line-height: 1;
@@ -410,14 +431,9 @@ body.appsub-open {overflow: hidden;}
 
 /* dental 쪽 닫기 버튼 위치 조정 */
 .dentalR .closeBtn {
-    left: 18px;
+    left: 10px;
     right: auto;
 }
-.dentalㅣ .closeBtn {
-    left: auto;
-    right: 15px;
-}
-
 
 
 

@@ -735,37 +735,70 @@ onLeave: function (index, nextIndex, direction) {
 $(function(){
 
   /* ===================================
-     이미지/figure 클릭 시 고정
+     routeyL 클릭
   =================================== */
   $('.app2mockup .routeyL').on('click', function(e){
-    // DESIGN PAGE 링크 클릭은 제외
+    // DESIGN PAGE 링크, 닫기 버튼 제외
     if($(e.target).closest('.intro a').length) return;
-    // 닫기 버튼 클릭은 제외
     if($(e.target).hasClass('closeBtn')) return;
     
     e.stopPropagation();
-    $(this).addClass('active');
-    $('.dentalR').removeClass('active');
+    
+    // ⭐ 이미 active면 해제, 아니면 활성화
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $('.dentalR').removeClass('active'); // 상대방 닫기
+    }
   });
 
   $('.app2mockup .dentalR').on('click', function(e){
-    // DESIGN PAGE 링크 클릭은 제외
     if($(e.target).closest('.intro a').length) return;
-    // 닫기 버튼 클릭은 제외
     if($(e.target).hasClass('closeBtn')) return;
     
     e.stopPropagation();
-    $(this).addClass('active');
-    $('.routeyL').removeClass('active');
+    
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $('.routeyL').removeClass('active');
+    }
   });
 
 
   /* ===================================
-     닫기 버튼 클릭
+     닫기 버튼
   =================================== */
   $('.closeBtn').on('click', function(e){
     e.stopPropagation();
-    $(this).closest('.routeyL, .dentalR').removeClass('active');
+    $(this).closest('.routeyL, .dentalR').removeClass('active hover');
+  });
+
+
+  /* ===================================
+     hover (active 상태가 아닐 때만)
+  =================================== */
+  $('.app2mockup .routeyL').on('mouseenter', function(){
+    // ⭐ 아무것도 active 아닐 때만 hover
+    if(!$('.routeyL, .dentalR').hasClass('active')){
+      $(this).addClass('hover');
+    }
+  });
+
+  $('.app2mockup .routeyL').on('mouseleave', function(){
+    $(this).removeClass('hover');
+  });
+
+  $('.app2mockup .dentalR').on('mouseenter', function(){
+    if(!$('.routeyL, .dentalR').hasClass('active')){
+      $(this).addClass('hover');
+    }
+  });
+
+  $('.app2mockup .dentalR').on('mouseleave', function(){
+    $(this).removeClass('hover');
   });
 
 
@@ -774,7 +807,17 @@ $(function(){
   =================================== */
   $('#appmain').on('click', function(e){
     if(!$(e.target).closest('.app2mockup figure').length){
-      $('.routeyL, .dentalR').removeClass('active');
+      $('.routeyL, .dentalR').removeClass('active hover');
+    }
+  });
+
+
+  /* ===================================
+     ESC 키로 닫기 (추가 기능)
+  =================================== */
+  $(document).on('keydown', function(e){
+    if(e.key === 'Escape'){
+      $('.routeyL, .dentalR').removeClass('active hover');
     }
   });
 
@@ -788,8 +831,7 @@ $(function(){
 
     const target = $(this).attr('href');
 
-    // 열린 상태 초기화
-    $('.routeyL, .dentalR').removeClass('active');
+    $('.routeyL, .dentalR').removeClass('active hover');
 
     $('#appsub').addClass('active');
     $('body').addClass('appsub-open');
@@ -842,7 +884,6 @@ $(function(){
   });
 
 });
-
      </script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
