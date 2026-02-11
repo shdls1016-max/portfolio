@@ -3,6 +3,40 @@
 @import url(reset.css);
 @import url(font.css);
 
+
+/* ===================================
+   페이지 로딩 깜빡임 방지
+=================================== */
+/* fullpage 초기화 전 모든 섹션 숨김 */
+body:not(.fp-enabled) #fullpage .section:not(#home) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* fullpage 초기화 후 섹션 보이기 */
+body.fp-enabled #fullpage .section {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* fullpage 초기화 전 요소들 숨김 */
+body:not(.fp-enabled) #appsub,
+body:not(.fp-enabled) .mini,
+body:not(.fp-enabled) .notebook,
+body:not(.fp-enabled) .app2mockup {
+    opacity: 0 !important;
+}
+
+/* fullpage 초기화 후 요소들 보이기 */
+body.fp-enabled .mini,
+body.fp-enabled .notebook,
+body.fp-enabled .app2mockup {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+
+
 html, body{width: 100%;}
 body{font-size: 10px;}
 
@@ -90,7 +124,7 @@ body > .copy p:nth-child(2) {animation: copyText2 2s forwards;}
 
 /* profile */
 #profile{width: 100%; background: url(../images/profilebg.png) center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; position: relative;}
-.cols3{display: flex;  position: relative; border: 1px solid #000; height: 100%; align-items: center; justify-content: center; gap: 100px;}
+.cols3{display: flex;  position: relative;  height: 100%; align-items: center; justify-content: center; gap: 100px;}
 .c1, .c2, .c3{font-size: 2.4em; font-weight: 500; line-height: 1.2; height: 550px;}
 .c3{display: flex; gap: 6.25vw;}
 .cols3 ul li{display: flex; flex-direction: column; row-gap: 0.5em; /* margin-top: 1em; */ font-weight: 400;}

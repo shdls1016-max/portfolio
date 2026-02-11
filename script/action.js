@@ -47,6 +47,11 @@ $(document).ready(function(){
         $('.nav').removeClass('bgbk');
         $('.copy').css('color', '');
       }
+    },
+    // ⭐ 초기화 완료 후 클래스 추가
+    afterRender: function() {
+    $('body').addClass('fp-enabled');
+    console.log('✅ fullpage 초기화 완료!');
     }
   });
 
