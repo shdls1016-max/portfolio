@@ -416,8 +416,9 @@
             <div class="app2mockup"> 
                 <figure class="routeyL"> 
                     <img src="images/appmainLroutey.png" alt="어플1루티목업"> 
-                    <div class="routeyhover on"> 
+                    <div class="routeyhover"> 
                         <span class="bgtest"></span>
+                        <button class="closeBtn">✕</button>
                         <div class="intro"> 
                             <span>TEAM PROJECT</span> 
                             <a href="#partTable"><span class="warrow"><span class="bd"></span></span> DESIGN PAGE</a> 
@@ -426,8 +427,9 @@
                 </figure> 
                 <figure class="dentalR"> 
                     <img src="images/appmainRdental.png" alt=""> 
-                    <div class="dentalhover on"> 
+                    <div class="dentalhover"> 
                         <span class="bgtest"></span>
+                        <button class="closeBtn">✕</button>
                         <div class="intro"> 
                             <span>INDIVIDUAL PROJECT</span> 
                             <a href="#indiApp">DESIGN PAGE <span class="warrow"><span class="bd"></span></span></a> 
@@ -490,11 +492,15 @@
                                 </li>
                             </ul>
             
-                            <!-- 연결선 -->
+                            <ul class="indication">
+                                <li><img src="images/dentalindicator1.svg" alt=""></li>
+                                <li><img src="images/dentalindicator2.svg" alt=""></li>
+                                <li><img src="images/dentalindicator3.svg" alt=""></li>
+                            </ul>
             
                             <figure>
                                 <img src="images/subpagedental.png" alt="덴탈가이드 홈화면 목업">
-                                <a href="#appmain">back</a>
+                                <a href="#appmain" class="backToMain">back</a>
                             </figure>
                         </div>
                     </div>
@@ -726,30 +732,70 @@ onLeave: function (index, nextIndex, direction) {
         });
 
 
+$(function(){
 
-        $(function(){
+  /* ===================================
+     이미지/figure 클릭 시 고정
+  =================================== */
+  $('.app2mockup .routeyL').on('click', function(e){
+    // DESIGN PAGE 링크 클릭은 제외
+    if($(e.target).closest('.intro a').length) return;
+    // 닫기 버튼 클릭은 제외
+    if($(e.target).hasClass('closeBtn')) return;
+    
+    e.stopPropagation();
+    $(this).addClass('active');
+    $('.dentalR').removeClass('active');
+  });
 
-  /* =========================
+  $('.app2mockup .dentalR').on('click', function(e){
+    // DESIGN PAGE 링크 클릭은 제외
+    if($(e.target).closest('.intro a').length) return;
+    // 닫기 버튼 클릭은 제외
+    if($(e.target).hasClass('closeBtn')) return;
+    
+    e.stopPropagation();
+    $(this).addClass('active');
+    $('.routeyL').removeClass('active');
+  });
+
+
+  /* ===================================
+     닫기 버튼 클릭
+  =================================== */
+  $('.closeBtn').on('click', function(e){
+    e.stopPropagation();
+    $(this).closest('.routeyL, .dentalR').removeClass('active');
+  });
+
+
+  /* ===================================
+     배경 클릭 시 모두 닫기
+  =================================== */
+  $('#appmain').on('click', function(e){
+    if(!$(e.target).closest('.app2mockup figure').length){
+      $('.routeyL, .dentalR').removeClass('active');
+    }
+  });
+
+
+  /* ===================================
      APP MAIN → APP SUB 열기
-  ========================= */
+  =================================== */
   $('#appmain .intro a').on('click', function(e){
     e.preventDefault();
+    e.stopPropagation();
 
-    const target = $(this).attr('href'); // #partTable / #indiApp
+    const target = $(this).attr('href');
 
-    // appsub 오픈
+    // 열린 상태 초기화
+    $('.routeyL, .dentalR').removeClass('active');
+
     $('#appsub').addClass('active');
-
-    // body 스크롤 잠금
     $('body').addClass('appsub-open');
-
-    // 내부 초기화
     $('#appsub > *').removeClass('active');
-
-    // 타겟 콘텐츠 활성화
     $(target).addClass('active');
 
-    // fullpage 잠금
     $.fn.fullpage.setAllowScrolling(false);
     $.fn.fullpage.setKeyboardScrolling(false);
   });
@@ -758,7 +804,6 @@ onLeave: function (index, nextIndex, direction) {
   /* =========================
      TEAM PROJECT 내부 li 이동
   ========================= */
-  // 다음 버튼
   $('#teamApp').on('click', '.next', function(){
     const $current = $(this).closest('li');
     const $next = $current.next('li');
@@ -769,7 +814,6 @@ onLeave: function (index, nextIndex, direction) {
     }
   });
 
-  // 이전 버튼 (새로 추가)
   $('#teamApp').on('click', '.prev', function(){
     const $current = $(this).closest('li');
     const $prev = $current.prev('li');
@@ -787,20 +831,13 @@ onLeave: function (index, nextIndex, direction) {
   $('#appsub').on('click', '.backToMain', function(e){
     e.preventDefault();
 
-    // appsub 닫기
     $('#appsub').removeClass('active');
-
-    // 내부 초기화
     $('#appsub > *').removeClass('active');
-
-    // body 스크롤 복구
     $('body').removeClass('appsub-open');
 
-    // fullpage 복구
     $.fn.fullpage.setAllowScrolling(true);
     $.fn.fullpage.setKeyboardScrolling(true);
 
-    // APP MAIN 섹션으로 이동
     fullpage_api.moveTo('toappmain');
   });
 
