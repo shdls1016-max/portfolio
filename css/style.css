@@ -666,3 +666,12 @@ font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; opacity: 0; color: 
 .part-grid .label {background: #0B91EA; color: #fff; font-weight: 400;}
 
 #partTable .teaminfo{font-size: 1.8em; color: #555; margin-top: 2em; display: block; text-align: center;}
+
+#partMe .content{display: flex; justify-content: space-between; position: relative; overflow: visible;}
+#partMe .content .left{}
+#partMe .content > .left > .mockup {width: 15.6vw; height: 63.33vh; overflow: hidden;}
+#partMe .content > .left > .mockup img{width: 100%; height: 100%; object-fit: contain; object-position: top left; display: block;}
+#partMe .content .left{}
+#partMe .content .right{width: 70%; position: relative; z-index: 10; background: rgba(254, 0, 0, 0.4);}
+
+
