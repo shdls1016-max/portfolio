@@ -266,28 +266,43 @@ $(document).on('click', '.dentalhover .intro a', function(e){
 });
 
 
-  /* =========================
-     TEAM PROJECT 내부 li 이동
-  ========================= */
-  $('#teamApp').on('click', '.next', function(){
-    const $current = $(this).closest('li');
-    const $next = $current.next('li');
+/* =========================
+   TEAM PROJECT 내부 li 이동 (href 기반)
+========================= */
+$('#teamApp').on('click', '.teambtn a', function(e){
+  e.preventDefault();
+  
+  const targetId = $(this).attr('href');
+  
+  // #appmain으로 가는 건 backToMain이 처리하니까 무시
+  if(targetId === '#appmain') return;
+  
+  console.log('이동할 페이지:', targetId);
+  
+  // 모든 li 비활성화
+  $('#teamApp li').removeClass('active');
+  
+  // 타겟 li 활성화
+  $(targetId).addClass('active');
+});
 
-    if($next.length){
-      $('#teamApp li').removeClass('active');
-      $next.addClass('active');
-    }
-  });
 
-  $('#teamApp').on('click', '.prev', function(){
-    const $current = $(this).closest('li');
-    const $prev = $current.prev('li');
-
-    if($prev.length){
-      $('#teamApp li').removeClass('active');
-      $prev.addClass('active');
-    }
-  });
+/* =========================
+   partTable의 member 클릭 이동
+========================= */
+$('.part-header').on('click', '.member', function(e){
+  e.preventDefault();
+  
+  const targetId = $(this).attr('href');
+  
+  console.log('멤버 클릭:', targetId);
+  
+  // 모든 li 비활성화
+  $('#teamApp li').removeClass('active');
+  
+  // 타겟 li 활성화
+  $(targetId).addClass('active');
+});
 
 
   /* =========================

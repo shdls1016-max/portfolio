@@ -385,7 +385,7 @@ position: relative; z-index: 2;}
     line-height: 1.6;
 }
 
-#teamApp li .backToMain {
+#teamApp > li > .backToMain {
     display: flex;
     flex-direction: column;
     row-gap: 1em;
