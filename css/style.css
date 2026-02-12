@@ -668,10 +668,28 @@ font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; opacity: 0; color: 
 #partTable .teaminfo{font-size: 1.8em; color: #555; margin-top: 2em; display: block; text-align: center;}
 
 #partMe .content{display: flex; justify-content: space-between; position: relative; overflow: visible;}
-#partMe .content .left{}
+#partMe .content .left{margin-left: 3.4vw; margin-top: 5vh;}
+
+.content .left .backToMain{display: flex; flex-direction: column; row-gap: 1em; padding-left: 1.6em; border-left: 5px solid #0B91EA;}
+/* 앱메인으로 이동하는 타이틀 스타일 */
+
 #partMe .content > .left > .mockup {width: 15.6vw; height: 63.33vh; overflow: hidden;}
 #partMe .content > .left > .mockup img{width: 100%; height: 100%; object-fit: contain; object-position: top left; display: block;}
-#partMe .content .left{}
-#partMe .content .right{width: 70%; position: relative; z-index: 10; background: rgba(254, 0, 0, 0.4);}
+#partMe .content .left figure{border: 1px solid red;}
+#partMe .content .left .linkbox{}
+#partMe .content .left .linkbox img{}
+#partMe .content .right{width: 70%; height: 100vh; position: relative; z-index: 10; background: linear-gradient(to left, #0B91EA, #3AA6EE);}
+
+.absoProfile{display: flex; flex-direction: column; position: absolute; top: 50%; transform:translate(-50%,-50%) ; border: 1px solid #000; align-items: center;}
+.absoProfile div{display: inline-block; width: fit-content; height: fit-content;}
+.absoProfile div .member {display: flex; flex-direction: column; gap: 8px;  position: relative;}
+.absoProfile div .member::before{content: ''; width: 9em; height: 9em; border-radius: 50%; background: rgba(255, 255, 255, 0.6); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.absoProfile div .member img {width: 9em; height: 9em; border-radius: 50%; object-fit: cover; border: 0.8em solid #0B91EA;}
+.absoProfile div .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
 
 
+.content .right .absoProfile .teambtn{margin-top: 10vh;}
+.content .right .absoProfile .teambtn a{width: 6em; height: auto; cursor: pointer; display: inline-block;}
+.content .right .absoProfile .teambtn a img{width: 100%; height: 100%;}
+
+.content .right .designedPage{position: absolute; display: flex; gap: 6.4em; top: 50%; left: 50%; transform: translate(-50%,-50%);}
