@@ -599,10 +599,30 @@ body.appsub-open {
 
 #indiApp{width: 100%; display: flex; flex-direction: row;}
 #indiApp .left{width: 38.5vw; height: 100vh; 
-background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden; display: flex; padding: 2% 4% 0 2%; box-sizing: border-box;}
-#indiApp .left .flowdesign{}
-#indiApp .left .flowdesign li{margin-bottom: 10px;}
-#indiApp .left .flowdesign li img{width: 94%; border-radius: 10px; display: block;}
+background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden; display: flex; padding: 2% 2% 0 2%; gap: 2%; box-sizing: border-box;}
+#indiApp .left .flowdesign{flex: 1; display: flex; flex-direction: column; gap: 10px;}   
+
+#indiApp .left .flowdesign:hover {z-index: 5;}
+
+
+
+/* flex:1; 로 균등분배하면서 너비정해짐 */
+#indiApp .left .flowdesign li{flex-shrink: 0; position: relative;}  /* 압축방지 */
+#indiApp .left .flowdesign li img{width: 100%; height: auto; border-radius: 10px; display: block; transition: .3s;}
+#indiApp .left .flowdesign li:hover {z-index: 20;}
+#indiApp .left .flowdesign li:hover img {transform: scale(1.5); box-shadow: 0 0 30px rgba(0,0,0,0.2);}
+
+
+/* 스크롤 애니메이션 */
+.flowdesign{animation: scrollUp 30s linear infinite;}
+@keyframes scrollUp {
+    0%{transform: translateY(0);}
+    100%{transform: translateY(-50%);}  /* 절반만 이동 */
+    
+}
+#indiApp .left .flowdesign:hover{animation-play-state: paused;}
+
+
 
 #indiApp .right{flex: 1;}
 #indiApp .right > a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 4.6vw; margin-top: 8.88vh;
@@ -615,7 +635,8 @@ border-left: 5px solid #6192da; }
 #indiApp .right .content .function li .h{color: #555; font-size: 1.6em; font-weight: 500; line-height: 1.2; margin-bottom: 7px;}
 #indiApp .right .content .function li .p{font-size: 1.8em; line-height: 1.6;}
 
-#indiApp .right .content figure{position: relative; margin-right: 4.8vw; display: inline-block; height: fit-content; position: relative;}
+/* routey mockup */
+#indiApp .right .content figure{position: relative; margin-right: 3.4vw; display: inline-block; height: fit-content; position: relative;}
 #indiApp .right .content figure::after{content: ''; width: 98%; height: 100%; transform: translateX(1%); 
 background: rgba(0, 0, 0, 0); border-radius: 40px;
 position: absolute; top: 0; left: 0;}
@@ -672,13 +693,26 @@ font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; opacity: 0; color: 
 .content{display: flex; justify-content: space-between; position: relative; overflow: visible;}
 .content .left{margin-left: 3.4vw; margin-top: 5vh; display: flex; flex-direction: column; justify-content: space-between;}
 
-.content .left .backToMain{display: flex; flex-direction: column; row-gap: 1em; padding-left: 1.6em; border-left: 5px solid #0B91EA;}
+.content .left > .backToMain{display: flex; flex-direction: column; row-gap: 1em; padding-left: 1.6em; border-left: 5px solid #0B91EA;}
 /* 앱메인으로 이동하는 타이틀 스타일 */
 
-.content > .left > .mockup {width: 15.6vw; height: 63.33vh; overflow: hidden; margin-top: 1.4em;}
-.content > .left > .mockup img{width: 100%; height: 100%; object-fit: contain; object-position: top left; display: block;}
+.content > .left > .mockup {/* width: 15.6vw; */ width: auto;  height: 63.33vh; overflow: hidden; margin-top: 1.4em;
+position: relative;}
+.content > .left > .mockup::after{content: ''; width: 98%; height: 100%;   
+position: absolute; top: 0; left: 0; transform: translateX(1%); 
+background: rgba(0, 0, 0, 0); border-radius: 40px;}
+
+.content > .left > .mockup img{width: 100%; height: 100%; object-fit: contain; object-position: bottom left; display: block;}
+.content > .left > .mockup > a{font-size: 4em; padding: 1px; border-bottom: 2px solid #fff; opacity: 0; color: #fff; z-index: 100; 
+position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)}
+
+
+.content > .left > .mockup:hover::after{opacity: 1; background: rgba(0, 0, 0, 0.4); transition: .4s;}
+.content > .left > .mockup:hover a{opacity: 1; transition: opacity .5s; } 
+
+
 .content .left > figure{}
-.content .left .linkset{margin:1.5em;}
+.content .left .linkset{margin:1.75%;}
 .content .left .linkset .linkbox{display: flex; align-items: center; gap: 7px; padding: 24px 20px;
 animation: cloud 2.4s ease-in-out infinite;}
 .content .left .linkset figure:nth-of-type(1){background: url('../images/linkbox1.svg'); background-repeat: no-repeat; background-size: contain;}
@@ -698,15 +732,21 @@ animation: cloud 2.4s ease-in-out infinite;}
 .absoProfile{display: flex; flex-direction: column; gap: 2.5em; position: absolute; top: 60%; transform:translate(-50%,-50%); align-items: center;}
 .absoProfile div{display: inline-block; width: fit-content; height: fit-content;}
 .absoProfile div .member {display: flex; flex-direction: column; gap: 8px;  position: relative;}
-.absoProfile div .member::before{content: ''; width: 9em; height: 9em; border-radius: 50%; background: rgba(255, 255, 255, 0.6); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.absoProfile div .member::before{content: ''; width: 9em; height: 9em; border-radius: 50%; background: rgba(255, 255, 255, 0); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
 .absoProfile div .member img {width: 9em; height: 9em; border-radius: 50%; object-fit: cover; border: 0.8em solid #0B91EA;}
-.absoProfile div .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.absoProfile div .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0;}
 
+.absoProfile div .member:hover::before{background: rgba(255, 255, 255, 0.6); transition: opacity .4s; }
+.absoProfile div .member:hover span{opacity: 1; transition: .4s;}
 
 .content .right .absoProfile .teambtn{margin-top: 10vh;}
 .content .right .absoProfile .teambtn a{width: 6em; height: auto; cursor: pointer; display: inline-block;}
 .content .right .absoProfile .teambtn a img{width: 100%; height: 100%;}
 
+
+
 .content .right .designedPage{position: absolute; display: flex; gap: 6.4em; bottom: 0;; left: 50%; transform: translateX(-50%); height: 88%; overflow: hidden;}
 .content .right .designedPage figure{width: 20.46vw; height: auto; }
 .content .right .designedPage figure img{width: 100%; height: 100%; object-fit: cover; object-position: top left;  }
+
+
