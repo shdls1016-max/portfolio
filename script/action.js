@@ -454,12 +454,11 @@ $(document).ready(function() {
   
 });
 
+
 /* ===================================
    designedPage 이미지 스크롤
 =================================== */
 $(document).ready(function() {
-  
-  let scrollTimeout;
   
   $('.designedPage figure').each(function() {
     const $figure = $(this);
@@ -481,14 +480,46 @@ $(document).ready(function() {
       
       // 이미지 이동
       $img.css('transform', `translateY(-${scrollPosition}px)`);
-      
-
+    });
     
-
+    // ⭐ 스크롤 위치 초기화 함수
+    $figure.data('resetScroll', function() {
+      scrollPosition = 0;
+      $img.css('transform', 'translateY(0)');
     });
   });
   
 });
+
+
+/* ===================================
+   ⭐ teamApp li 변경 시 스크롤 초기화
+=================================== */
+$('#teamApp').on('click', '.teambtn a, .member', function(e) {
+  e.preventDefault();
+  
+  const targetId = $(this).attr('href');
+  
+  if(targetId === '#appmain') return;
+  
+  console.log('이동할 페이지:', targetId);
+  
+  // ⭐ 모든 designedPage 스크롤 초기화
+  $('.designedPage figure').each(function() {
+    const resetFn = $(this).data('resetScroll');
+    if (resetFn) resetFn();
+  });
+  
+  // 모든 li 비활성화
+  $('#teamApp li').removeClass('active');
+  
+  // 타겟 li 활성화
+  $(targetId).addClass('active');
+});
+
+});
+
+
 
 
 
