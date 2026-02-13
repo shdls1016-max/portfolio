@@ -305,6 +305,27 @@ $('.part-header').on('click', '.member', function(e){
 });
 
 
+
+
+/* =========================
+   개별제작디자인의 member 클릭 이동  내가 위에꺼 복붙해서 수정한거라 문제생기면 여기보기
+========================= */
+$('.absoProfile').on('click', '.member', function(e){
+  e.preventDefault();
+  
+  const targetId = $(this).attr('href');
+  
+  console.log('멤버 클릭:', targetId);
+  
+  // 모든 li 비활성화
+  $('#teamApp li').removeClass('active');
+  
+  // 타겟 li 활성화
+  $(targetId).addClass('active');
+});
+
+
+
   /* =========================
      APP SUB → APP MAIN 복귀
   ========================= */
@@ -394,5 +415,47 @@ $('.part-header').on('click', '.member', function(e){
 
       $('.compass2').css('transform', 'translateX(-50%) rotate(' + currentAngle + 'deg)');
   });
+
+
+/* ===================================
+   flowdesign 무한 스크롤 초기화
+=================================== */
+$(document).ready(function() {
+  
+  // 각 flowdesign 초기화
+  $('.flowdesign').each(function() {
+    const $flow = $(this);
+    
+    // 이미지 로드 완료 후 높이 계산
+    $flow.find('img').on('load', function() {
+      calculateScrollDistance($flow);
+    });
+    
+    // 이미 로드된 경우 즉시 계산
+    if ($flow.find('img')[0].complete) {
+      calculateScrollDistance($flow);
+    }
+  });
+  
+  function calculateScrollDistance($flow) {
+    const liCount = $flow.find('li').length / 2; // 원본 개수
+    let totalHeight = 0;
+    
+    // 원본 li들의 높이만 합산
+    $flow.find('li').slice(0, liCount).each(function() {
+      totalHeight += $(this).outerHeight(true); // margin 포함
+    });
+    
+    console.log($flow.attr('class'), 'totalHeight:', totalHeight);
+    
+    // CSS 변수로 저장
+    $flow.css('--scroll-distance', `-${totalHeight}px`);
+  }
+  
+});
+
+
+
+
 
 });

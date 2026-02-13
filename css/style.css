@@ -599,26 +599,25 @@ body.appsub-open {
 
 #indiApp{width: 100%; display: flex; flex-direction: row;}
 #indiApp .left{width: 38.5vw; height: 100vh; 
-background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden; display: flex; padding: 2% 2% 0 2%; gap: 2%; box-sizing: border-box;}
-#indiApp .left .flowdesign{flex: 1; display: flex; flex-direction: column; gap: 10px;}   
+background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 218, 0.95) 60%, rgba(97, 146, 218, 1) 100%); overflow: hidden; display: flex; padding: 0% 2% 0 2%; gap: 2%; box-sizing: border-box;}
+#indiApp .left .flowdesign{flex: 1; display: flex; flex-direction: column; gap: 10px; will-change: transform;}
+/* will-change: transform; > 애니메이션이 부드럽게 반복되게 */   
 
 #indiApp .left .flowdesign:hover {z-index: 5;}
-
 
 
 /* flex:1; 로 균등분배하면서 너비정해짐 */
 #indiApp .left .flowdesign li{flex-shrink: 0; position: relative;}  /* 압축방지 */
 #indiApp .left .flowdesign li img{width: 100%; height: auto; border-radius: 10px; display: block; transition: .3s;}
 #indiApp .left .flowdesign li:hover {z-index: 20;}
-#indiApp .left .flowdesign li:hover img {transform: scale(1.5); box-shadow: 0 0 30px rgba(0,0,0,0.2);}
+#indiApp .left .flowdesign li:hover img {transform: scale(1.4); box-shadow: 0 0 30px rgba(0,0,0,0.2);}
 
 
 /* 스크롤 애니메이션 */
-.flowdesign{animation: scrollUp 30s linear infinite;}
+.flowdesign{animation: scrollUp 20s linear infinite;}
 @keyframes scrollUp {
     0%{transform: translateY(0);}
-    100%{transform: translateY(-50%);}  /* 절반만 이동 */
-    
+    100%{transform: translateY(-100%);}
 }
 #indiApp .left .flowdesign:hover{animation-play-state: paused;}
 
@@ -728,13 +727,14 @@ animation: cloud 2.4s ease-in-out infinite;}
 
 
 .content .right{width: 70%; height: 100vh; position: relative; z-index: 10; background: linear-gradient(to left, #0B91EA, #3AA6EE);}
+.content .right > span{font-size: 1.8em; position: absolute; right: 0; color: #efffff; font-weight: 300; margin: 1em 1.1em 0 0;}
 
 .absoProfile{display: flex; flex-direction: column; gap: 2.5em; position: absolute; top: 60%; transform:translate(-50%,-50%); align-items: center;}
 .absoProfile div{display: inline-block; width: fit-content; height: fit-content;}
 .absoProfile div .member {display: flex; flex-direction: column; gap: 8px;  position: relative;}
 .absoProfile div .member::before{content: ''; width: 9em; height: 9em; border-radius: 50%; background: rgba(255, 255, 255, 0); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
 .absoProfile div .member img {width: 9em; height: 9em; border-radius: 50%; object-fit: cover; border: 0.8em solid #0B91EA;}
-.absoProfile div .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0;}
+.absoProfile div .member span {font-size: 1.8em; font-weight: 600; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0; }
 
 .absoProfile div .member:hover::before{background: rgba(255, 255, 255, 0.6); transition: opacity .4s; }
 .absoProfile div .member:hover span{opacity: 1; transition: .4s;}
