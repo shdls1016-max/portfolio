@@ -454,8 +454,42 @@ $(document).ready(function() {
   
 });
 
+/* ===================================
+   designedPage 이미지 스크롤
+=================================== */
+$(document).ready(function() {
+  
+  let scrollTimeout;
+  
+  $('.designedPage figure').each(function() {
+    const $figure = $(this);
+    const $img = $figure.find('img:first-child');
+    let scrollPosition = 0;
+    
+    // 마우스 휠 이벤트
+    $figure.on('wheel', function(e) {
+      e.preventDefault();
+      
+      const delta = e.originalEvent.deltaY;
+      const figureHeight = $figure.height();
+      const imgHeight = $img.height();
+      const maxScroll = imgHeight - figureHeight;
+      
+      // 스크롤 위치 계산
+      scrollPosition += delta * 0.5; // 스크롤 속도 조절
+      scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+      
+      // 이미지 이동
+      $img.css('transform', `translateY(-${scrollPosition}px)`);
+      
 
+    
 
-
-
+    });
+  });
+  
 });
+
+
+
+
