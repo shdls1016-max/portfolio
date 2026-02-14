@@ -34,7 +34,7 @@ $(document).ready(function(){
       // ⭐ 2.4초 후 dl에 active 추가
       setTimeout(function() {
         $('.mini.dong').addClass('active');
-      }, 550); // 2초(mini 애니메이션) + 0.45초(여유)
+      }, 50); // 2초(mini 애니메이션) + 0.45초(여유)
     }
   },
   
@@ -379,15 +379,7 @@ $('.absoProfile').on('click', '.member', function(e){
   =============================== */
   let currentMockup = 'dong';
   
-  // ⭐ 페이지 로드 2.4초 후 (dl mini 나타날 때) active 추가
-  setTimeout(function() {
-      $('.mini.dong').addClass('active');
-  }, 2400);
-
-  /* ===============================
-     mini hover 시 목업 연결 + active
-  =============================== */
-  $('.mini').hover(
+$('.mini').hover(
       function() {
           const $this = $(this);
           
