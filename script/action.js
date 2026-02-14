@@ -354,31 +354,106 @@ $('.absoProfile').on('click', '.member', function(e){
       $(this).removeClass('on')
   })
 
+   /* ===============================
+     ⭐ 페이지 로드 시 초기 목업(dl) active
+  =============================== */
+  let currentMockup = 'dong';
+  
+  // ⭐ 페이지 로드 2.4초 후 (dl mini 나타날 때) active 추가
+  setTimeout(function() {
+      $('.mini.dong').addClass('active');
+  }, 2400);
 
-  //나침반 hover 하면 배경목업 변경되게
-  $('.mini').hover(function(){
-      if($(this).hasClass('dong')){
-          $('.webcapture').attr('src','images/dongkook.jpg' )
+  /* ===============================
+     mini hover 시 목업 연결 + active
+  =============================== */
+  $('.mini').hover(
+      function() {
+          const $this = $(this);
+          
+          // 모든 mini에서 active 제거
+          $('.mini').removeClass('active');
+          
+          // 현재 mini에 active 추가
+          $this.addClass('active');
+          
+          // 이미지 변경 + 초기화
+          const $webcapture = $('.webcapture');
+          
+          if($this.hasClass('dong')){
+              if (currentMockup !== 'dong') {
+                  $webcapture.css('top', '0');
+                  $webcapture.attr('src','images/dongkook.jpg');
+                  currentMockup = 'dong';
+              }
+          }
+          if($this.hasClass('book')){
+              if (currentMockup !== 'book') {
+                  $webcapture.css('top', '0');
+                  $webcapture.attr('src','images/library.jpg');
+                  currentMockup = 'book';
+              }
+          }
+          if($this.hasClass('dl')){
+              if (currentMockup !== 'dl') {
+                  $webcapture.css('top', '0');
+                  $webcapture.attr('src','images/dl.jpg');
+                  currentMockup = 'dl';
+              }
+          }
+          if($this.hasClass('dive')){
+              if (currentMockup !== 'dive') {
+                  $webcapture.css('top', '0');
+                  $webcapture.attr('src','images/underwaterdive.jpg');
+                  currentMockup = 'dive';
+              }
+          }
       }
-      if($(this).hasClass('book')){
-          $('.webcapture').attr('src','images/library.jpg' )
-      }
-      if($(this).hasClass('dl')){
-          $('.webcapture').attr('src','images/dl.jpg')
-      }
-      if($(this).hasClass('dive')){
-          $('.webcapture').attr('src','images/underwaterdive.jpg')
+  );
+
+
+  /* ===============================
+     목업 스크롤 효과
+  =============================== */
+  let isMonitorHovering = false;
+
+  $('.notebook .monitor').on('mouseenter', function() {
+      isMonitorHovering = true;
+      
+      const $img = $(this).find('.webcapture');
+      const monitorH = $(this).height();
+      
+      $img.off('load').on('load', function() {
+          if (isMonitorHovering) {
+              const imgH = $(this).height();
+              const scrollDistance = -(imgH - monitorH);
+              
+              $(this).css({
+                  'transition': 'top 3s ease',
+                  'top': scrollDistance + 'px'
+              });
+          }
+      });
+      
+      if ($img[0].complete) {
+          const imgH = $img.height();
+          const scrollDistance = -(imgH - monitorH);
+          
+          $img.css({
+              'transition': 'top 3s ease',
+              'top': scrollDistance + 'px'
+          });
       }
   });
 
-  //webmain 목업 효과
-  $('.notebook .monitor').on('mouseenter', function() {
-      var $img = $(this).find('.webcapture');
-      var monitorH = $(this).height();
-      var imgH = $img.height();
-      $img.css('top', -(imgH - monitorH) + 'px');
-  }).on('mouseleave', function() {
-      $(this).find('.webcapture').css('top', '0');
+  $('.notebook .monitor').on('mouseleave', function() {
+      isMonitorHovering = false;
+      
+      const $img = $(this).find('.webcapture');
+      $img.css({
+          'transition': 'top 0.5s ease',
+          'top': '0'
+      });
   });
 
 
