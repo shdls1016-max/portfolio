@@ -20,7 +20,24 @@ $(document).ready(function(){
         $('.nav').addClass('bgbk');
         $('.copy').css('color', '#fff');
       }
-    },
+
+      // ⭐ webmain(index 3) 도착 시 mini 애니메이션 트리거
+    if (index === 3) {
+      // 기존 애니메이션 클래스 제거 (재진입 대비)
+      $('.mini').removeClass('show-mini');
+      
+      // 약간의 딜레이 후 클래스 추가
+      setTimeout(function() {
+        $('.mini').addClass('show-mini');
+      }, 50);
+      
+      // ⭐ 2.4초 후 dl에 active 추가
+      setTimeout(function() {
+        $('.mini.dong').addClass('active');
+      }, 550); // 2초(mini 애니메이션) + 0.45초(여유)
+    }
+  },
+  
 
     onLeave: function (index, nextIndex, direction) {
       if (index === 1 && nextIndex !== 1) {
@@ -46,6 +63,9 @@ $(document).ready(function(){
       if (index === 3 && nextIndex !== 3) {
         $('.nav').removeClass('bgbk');
         $('.copy').css('color', '');
+
+        // 즉시 show-mini와 active 제거
+      $('.mini').removeClass('show-mini active');
       }
     },
     // ⭐ 초기화 완료 후 클래스 추가
