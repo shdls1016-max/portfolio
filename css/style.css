@@ -376,7 +376,7 @@ position: relative; z-index: 2;}
     pointer-events: none;
     visibility: hidden;
     transition: opacity 0.3s ease;
-    overflow-y: auto;
+    overflow-y: hidden;  /* auto 였는데 세로 스크롤생겨서 바꿈 */
 }
 
 #appsub.active {
@@ -678,7 +678,7 @@ background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 
 
 
 #indiApp .right{flex: 1;}
-#indiApp .right > a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 4.6vw; margin-top: 8.88vh;
+#indiApp .right > a{display: flex; flex-direction: column; justify-content: center; row-gap: 1em; padding-left: 1.6em; margin-left: 3.4vw; margin-top: 5vh;
 border-left: 5px solid #6192da; }
 #indiApp .right a span:first-of-type{font-size: 4em; font-weight: 500; }
 #indiApp .right a span:last-of-type{font-size: 1.8em; font-weight: 400; }
