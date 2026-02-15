@@ -19,24 +19,27 @@ $(document).ready(function(){
       if (index === 3) {
         $('.nav').addClass('bgbk');
         $('.copy').css('color', '#fff');
-      }
 
-      // ⭐ webmain(index 3) 도착 시 mini 애니메이션 트리거
-    if (index === 3) {
-      // 기존 애니메이션 클래스 제거 (재진입 대비)
-      $('.mini').removeClass('show-mini');
-      
-      // 약간의 딜레이 후 클래스 추가
-      setTimeout(function() {
-        $('.mini').addClass('show-mini');
-      }, 50);
-      
-      // ⭐ 2.4초 후 dl에 active 추가
-      setTimeout(function() {
+     // ⭐ webmain 도착 시 mini 나타남
+    setTimeout(function() {
+      $('.mini').addClass('show-mini');
+    }, 50);
+    
+    // ⭐ 1초 후 현재 목업에 해당하는 mini에 active 추가
+    setTimeout(function() {
+      // currentMockup 변수 기준으로 active 추가
+      if (currentMockup === 'dong') {
         $('.mini.dong').addClass('active');
-      }, 50); // 2초(mini 애니메이션) + 0.45초(여유)
-    }
-  },
+      } else if (currentMockup === 'book') {
+        $('.mini.book').addClass('active');
+      } else if (currentMockup === 'dl') {
+        $('.mini.dl').addClass('active');
+      } else if (currentMockup === 'dive') {
+        $('.mini.dive').addClass('active');
+      }
+    }, 1050);
+  } 
+},
   
 
     onLeave: function (index, nextIndex, direction) {
