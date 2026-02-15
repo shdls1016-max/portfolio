@@ -765,12 +765,14 @@ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)}
 
 
 .content .left > figure{}
-.content .left .linkset{margin:1.75%;}
+.content .left .linkset{/* margin:1.75%; */ margin-left: 1.5em;}
 .content .left .linkset .linkbox{display: flex; align-items: center; gap: 7px; padding: 24px 16px;
 animation: cloud 2.4s ease-in-out infinite;}
-.content .left .linkset figure:nth-of-type(1){background: url('../images/linkbox2.svg'); background-repeat: no-repeat; background-size: contain;}
-.content .left .linkset figure:nth-of-type(2){background: url('../images/linkbox2.svg'); background-repeat: no-repeat; background-size: contain;}
-.content .left .linkset .linkbox img{width: 2.2em; height: 2.2em;}
+.content .left .linkset .linkbox{width: fit-content; height: fit-content; padding: 12px 16px 12px 12px; background: linear-gradient(to bottom, rgba(16,182,234,0.8), rgba(16,182,234,1)); border-radius: 8px; position: relative;}
+.content .left .linkset .linkbox::before{content:''; position: absolute; width: 1.6em; height: 2em; background: #3ac3ee; transform: translateX(-50%); top: -1.9em; left: 2em; clip-path: polygon(50% 44%, 0% 100%, 100% 100%);}
+
+.content .left .linkset figure:nth-child(2){margin-top: 1.6em;}
+.content .left .linkset .linkbox img{width: 2em; height: 2em;} 
 .content .left .linkset .linkbox a{font-size: 2em; font-weight: 300; color: #fff; border-bottom: 0.5px solid #fff; white-space: nowrap; }
 
 @keyframes cloud {
