@@ -139,154 +139,112 @@ $(document).ready(function(){
   });
 
 
-  /* ===================================
-     routeyL 클릭
-  =================================== */
-  $('.app2mockup .routeyL').on('click', function(e){
-    if($(e.target).closest('.intro a').length) return;
-    if($(e.target).hasClass('closeBtn')) return;
-    
-    e.stopPropagation();
-    
-    if($(this).hasClass('active')){
-      $(this).removeClass('active');
-    } else {
-      $(this).addClass('active');
-      $('.dentalR').removeClass('active');
-    }
-  });
-
-
-  /* ===================================
-     dentalR 클릭
-  =================================== */
-  $('.app2mockup .dentalR').on('click', function(e){
-    if($(e.target).closest('.intro a').length) return;
-    if($(e.target).hasClass('closeBtn')) return;
-    
-    e.stopPropagation();
-    
-    if($(this).hasClass('active')){
-      $(this).removeClass('active');
-    } else {
-      $(this).addClass('active');
-      $('.routeyL').removeClass('active');
-    }
-  });
-
-
-  /* ===================================
-     닫기 버튼
-  =================================== */
-  $('.closeBtn').on('click', function(e){
-    e.stopPropagation();
-    $(this).closest('.routeyL, .dentalR').removeClass('active hover');
-  });
-
-
-  /* ===================================
-     hover
-  =================================== */
-  $('.app2mockup .routeyL').on('mouseenter', function(){
-    if(!$('.routeyL, .dentalR').hasClass('active')){
-      $(this).addClass('hover');
-    }
-  });
-
-  $('.app2mockup .routeyL').on('mouseleave', function(){
-    $(this).removeClass('hover');
-  });
-
-  $('.app2mockup .dentalR').on('mouseenter', function(){
-    if(!$('.routeyL, .dentalR').hasClass('active')){
-      $(this).addClass('hover');
-    }
-  });
-
-  $('.app2mockup .dentalR').on('mouseleave', function(){
-    $(this).removeClass('hover');
-  });
-
-
-  /* ===================================
-     배경 클릭 시 닫기
-  =================================== */
-  $('#appmain').on('click', function(e){
-    if(!$(e.target).closest('.app2mockup figure').length){
-      $('.routeyL, .dentalR').removeClass('active hover');
-    }
-  });
-
-
-  /* ===================================
-     ESC 키로 닫기
-  =================================== */
-  $(document).on('keydown', function(e){
-    if(e.key === 'Escape' && !$('body').hasClass('websub-open') && !$('body').hasClass('appsub-open')){
-      $('.routeyL, .dentalR').removeClass('active hover');
-    }
-  });
 
 
 /* ===================================
-   routey DESIGN PAGE → partTable
+   routeyL/dentalR hover 및 클릭
 =================================== */
-$(document).on('click', '.routeyhover .intro a', function(e){
+
+// routeyL hover
+$('.app2mockup .routeyL').on('mouseenter', function(){
+  if(!$('.routeyL, .dentalR').hasClass('active')){
+    $(this).addClass('hover');
+  }
+}).on('mouseleave', function(){
+  $(this).removeClass('hover');
+});
+
+// dentalR hover
+$('.app2mockup .dentalR').on('mouseenter', function(){
+  if(!$('.routeyL, .dentalR').hasClass('active')){
+    $(this).addClass('hover');
+  }
+}).on('mouseleave', function(){
+  $(this).removeClass('hover');
+});
+
+
+/* ===================================
+   목업 이미지 클릭 → appsub 이동
+=================================== */
+
+// routeyL 이미지 클릭
+$('.app2mockup .routeyL > img').on('click', function(e){
   e.preventDefault();
   e.stopPropagation();
-
-  console.log('🔵 ROUTEY 클릭됨!');
+  
+  console.log('🔵 routey 이미지 클릭!');
   
   $('.routeyL, .dentalR').removeClass('active hover');
-
+  
   $('#appsub').addClass('active');
   $('body').addClass('appsub-open');
   
-  // ⭐ 강제로 모든 자식 초기화 (removeClass 대신 hide 사용)
   $('#indiApp').hide().removeClass('active');
   $('#teamApp').hide().removeClass('active');
   $('#teamApp li').removeClass('active');
   
-  // ⭐ teamApp과 partTable만 show + active
   $('#teamApp').show().addClass('active');
   $('#partTable').addClass('active');
+  
+  $.fn.fullpage.setAllowScrolling(false);
+  $.fn.fullpage.setKeyboardScrolling(false);
+});
 
-  console.log('#teamApp display:', $('#teamApp').css('display'));
-  console.log('#indiApp display:', $('#indiApp').css('display'));
-
+// dentalR 이미지 클릭
+$('.app2mockup .dentalR > img').on('click', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  
+  console.log('🟢 dental 이미지 클릭!');
+  
+  $('.routeyL, .dentalR').removeClass('active hover');
+  
+  $('#appsub').addClass('active');
+  $('body').addClass('appsub-open');
+  
+  $('#teamApp').hide().removeClass('active');
+  $('#teamApp li').removeClass('active');
+  $('#indiApp').hide().removeClass('active');
+  
+  $('#indiApp').show().addClass('active');
+  
   $.fn.fullpage.setAllowScrolling(false);
   $.fn.fullpage.setKeyboardScrolling(false);
 });
 
 
 /* ===================================
-   dental DESIGN PAGE → indiApp
+   닫기 버튼
 =================================== */
-$(document).on('click', '.dentalhover .intro a', function(e){
-  e.preventDefault();
+$('.closeBtn').on('click', function(e){
   e.stopPropagation();
-
-  console.log('🟢 DENTAL 클릭됨!');
-  
-  $('.routeyL, .dentalR').removeClass('active hover');
-
-  $('#appsub').addClass('active');
-  $('body').addClass('appsub-open');
-  
-  // ⭐ 강제로 모든 자식 초기화
-  $('#teamApp').hide().removeClass('active');
-  $('#teamApp li').removeClass('active');
-  $('#indiApp').hide().removeClass('active');
-  
-  // ⭐ indiApp만 show + active
-  $('#indiApp').show().addClass('active');
-
-  console.log('#teamApp display:', $('#teamApp').css('display'));
-  console.log('#indiApp display:', $('#indiApp').css('display'));
-
-  $.fn.fullpage.setAllowScrolling(false);
-  $.fn.fullpage.setKeyboardScrolling(false);
+  $(this).closest('.routeyL, .dentalR').removeClass('active hover');
 });
+
+
+/* ===================================
+   배경 클릭 시 닫기
+=================================== */
+$('#appmain').on('click', function(e){
+  if(!$(e.target).closest('.app2mockup figure').length){
+    $('.routeyL, .dentalR').removeClass('active hover');
+  }
+});
+
+
+/* ===================================
+   ESC 키로 닫기
+=================================== */
+$(document).on('keydown', function(e){
+  if(e.key === 'Escape' && !$('body').hasClass('websub-open') && !$('body').hasClass('appsub-open')){
+    $('.routeyL, .dentalR').removeClass('active hover');
+  }
+});
+
+
+
+
 
 
 /* =========================
