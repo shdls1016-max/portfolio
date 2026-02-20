@@ -607,6 +607,39 @@ $('#teamApp').on('click', '.teambtn a, .member', function(e) {
   $(targetId).addClass('active');
 });
 
+
+
+
+/* ===============================
+   mini hover 시 커서 따라다니는 CLICK 텍스트
+=============================== */
+const $cursorText = $('.mini-cursor-text');
+let isHoveringMini = false;
+
+$('.mini').on('mouseenter', function() {
+    isHoveringMini = true;
+    $cursorText.addClass('show');
+});
+
+$('.mini').on('mouseleave', function() {
+    isHoveringMini = false;
+    $cursorText.removeClass('show');
+});
+
+$(document).on('mousemove', function(e) {
+    if (isHoveringMini) {
+        $cursorText.css({
+            left: e.pageX + 'px',
+            top: e.pageY + 'px'
+        });
+    }
+});
+
+
+
+
+
+
 });
 
 
