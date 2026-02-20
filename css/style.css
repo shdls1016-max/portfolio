@@ -163,16 +163,16 @@ backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); opacity: 0; vi
 
 
 .mini.show-mini.dong { 
-    animation: fadeInMini 0.8s ease 0.4s forwards; 
+    animation: fadeInMini 0.8s ease 0.2s forwards; 
 }
 .mini.show-mini.book { 
-    animation: fadeInMini 0.8s ease 0.6s forwards; 
+    animation: fadeInMini 0.8s ease 0.4s forwards; 
 }
 .mini.show-mini.dl { 
-    animation: fadeInMini 0.8s ease 0.8s forwards; 
+    animation: fadeInMini 0.8s ease 0.6s forwards; 
 }
 .mini.show-mini.dive { 
-    animation: fadeInMini 0.8s ease 1.0s forwards; 
+    animation: fadeInMini 0.8s ease 0.8s forwards; 
 }
 
 @keyframes fadeInMini {
@@ -253,6 +253,31 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 }
 
 
+/* ===================================
+   mini hover 시 커서 따라다니는 텍스트
+=================================== */
+.mini-cursor-text {
+    position: fixed;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    transform: translate(20px, 7px);
+    margin-top: 0px; /* 커서 위쪽에 위치 */
+}
+
+.mini-cursor-text.show {
+    opacity: 1;
+}
+
+
+
+
+
+
 
 
 /* web sub */
@@ -276,12 +301,22 @@ body.websub-open .copy {
 .websub #sub1 {}
 .websub > li > figure{width: 90em; height: 76%; border-radius: 4px; position: relative;}
 .websub > li > figure img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
-.websub > li > figure a{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
+.websub > li > figure .backText{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 4em; color: #fff; font-weight: 300; padding-bottom: 1px; border-bottom: 2px solid #fff;
 opacity: 0;}   
 
+/* websub 왼쪽 목업부분 */
 .websub > li > figure::before{content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0); }
 .websub > li > figure:hover::before{background: rgba(0, 0, 0, 0.4); transition: .4s;}
-.websub > li > figure:hover a{opacity: 1; transition: opacity .5s;}
+.websub > li > figure:hover .backText{opacity: 1; transition: opacity .5s;}
+.websub > li > figure .backIcon{position: absolute; top: 20px; left: 20px; width: 32px; height: 32px; display: block;}
+.websub > li > figure .backIcon > span{width: 100%; height: 4px; background: rgba(250, 250, 250, 1); display: inline-block; transform: translate(-50%,-50%); top: 50%; left: 50%; position: absolute;}
+.websub > li > figure .backIcon > span::before,
+.websub > li > figure .backIcon > span::after
+{content: ''; width: 50%; height: 100%; background: rgba(250, 250, 250, 1);}
+.websub > li > figure .backIcon > span::before{top: 1px; position: absolute; transform-origin: left; transform: rotate(-45deg);}
+.websub > li > figure .backIcon > span::after{top: -1px; position: absolute; transform-origin: left; transform: rotate(45deg);}
+
+
 
 .websub > li > .right{/* border: 1px solid red; */}
 .websub > li > .right .rightTop{display: flex; justify-content: space-between; align-items: end; padding:0.4em 4.4em; max-width:31vw; /* 타이틀 배경 길이 바꾸고 싶으면 여기 수치 조정하기! */
