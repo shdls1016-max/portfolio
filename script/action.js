@@ -641,6 +641,46 @@ $(document).on('mousemove', function(e) {
 
 
 
+/* ===============================
+   designedPage 이미지 hover 시 커서 따라다니는 SCROLL 텍스트
+=============================== */
+const $scrollText = $('.scroll-cursor-text');
+let isHoveringScroll = false;
+
+$('.content .right .designedPage > figure').on('mouseenter', function() {
+  console.log('✅ SCROLL 이미지 hover 감지!');   
+  isHoveringScroll = true;
+    $scrollText.addClass('show');
+}).on('mouseleave', function() {
+   console.log('❌ SCROLL 이미지 leave'); 
+    isHoveringScroll = false;
+    $scrollText.removeClass('show');
+});
+
+// 기존 커서 이동에 추가
+$(document).on('mousemove', function(e) {
+    if (isHoveringClickable) {
+        $cursorText.css({
+            left: e.pageX + 'px',
+            top: e.pageY + 'px'
+        });
+    }
+    
+    // ⭐ SCROLL 텍스트 이동 추가
+    if (isHoveringScroll) {
+        $scrollText.css({
+            left: e.pageX + 'px',
+            top: e.pageY + 'px'
+        });
+    }
+});
+
+
+
+
+
+
+
 
 });
 
