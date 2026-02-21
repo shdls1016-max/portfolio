@@ -571,7 +571,7 @@ $('#teamApp').on('click', '.teambtn a, .member', function(e) {
 /* ===============================
    mini hover 시 커서 따라다니는 CLICK 텍스트
 =============================== */
-const $cursorText = $('.mini-cursor-text');
+/* const $cursorText = $('.mini-cursor-text');
 let isHoveringMini = false;
 
 $('.mini').on('mouseenter', function() {
@@ -592,8 +592,52 @@ $(document).on('mousemove', function(e) {
         });
     }
 });
+ */
 
 
+
+/* ===============================
+   mini + appmain 목업 hover 시 커서 따라다니는 CLICK 텍스트
+=============================== */
+const $cursorText = $('.mini-cursor-text');
+let isHoveringClickable = false;
+
+// mini hover
+$('.mini').on('mouseenter', function() {
+    isHoveringClickable = true;
+    $cursorText.addClass('show').css('color', '#fff');
+}).on('mouseleave', function() {
+    isHoveringClickable = false;
+    $cursorText.removeClass('show');
+});
+
+// routeyL 이미지 hover
+$('.app2mockup .routeyL > img').on('mouseenter', function() {
+    isHoveringClickable = true;
+    $cursorText.addClass('show').css('color', '#111');
+}).on('mouseleave', function() {
+    isHoveringClickable = false;
+    $cursorText.removeClass('show');
+});
+
+// dentalR 이미지 hover
+$('.app2mockup .dentalR > img').on('mouseenter', function() {
+    isHoveringClickable = true;
+    $cursorText.addClass('show').css('color', '#111'); 
+}).on('mouseleave', function() {
+    isHoveringClickable = false;
+    $cursorText.removeClass('show');
+});
+
+// 커서 이동
+$(document).on('mousemove', function(e) {
+    if (isHoveringClickable) {
+        $cursorText.css({
+            left: e.pageX + 'px',
+            top: e.pageY + 'px'
+        });
+    }
+});
 
 
 
