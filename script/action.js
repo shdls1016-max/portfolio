@@ -647,12 +647,10 @@ $(document).on('mousemove', function(e) {
 const $scrollText = $('.scroll-cursor-text');
 let isHoveringScroll = false;
 
-$('.content .right .designedPage > figure').on('mouseenter', function() {
-  console.log('✅ SCROLL 이미지 hover 감지!');   
+$('.content .right .designedPage > figure').on('mouseenter', function() { 
   isHoveringScroll = true;
     $scrollText.addClass('show');
 }).on('mouseleave', function() {
-   console.log('❌ SCROLL 이미지 leave'); 
     isHoveringScroll = false;
     $scrollText.removeClass('show');
 });
