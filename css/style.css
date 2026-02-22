@@ -198,10 +198,10 @@ inset 2px 2px 1px rgba(17,17,17,0.08); */
 .mini figure img{width: 100%; height: 100%; object-fit: contain;}
 #webmain .mini .name{opacity: 0; white-space:nowrap; margin-left: 0.5em; /* transition: opacity .3s; */}
 
-.mini.dong{top: 11%; left: 68%;}
-.mini.book{top: 62%; left: 79%;}
-.mini.dl{top: 36%; left: 33%;}
-.mini.dive{top: 86%; left: 35%;}
+.mini.dong{top: 11%; left: 45%;}
+.mini.book{top: 36%; left: 80%;}
+.mini.dl{top: 62%; left: 32%;}
+.mini.dive{top: 86%; left: 68%;}
 
 .mini.on{width: auto; padding: 0 2.4em; }
 .mini.on figure{left: auto; transform: translateX(0);}
