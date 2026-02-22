@@ -707,7 +707,7 @@ background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 
 /* flex:1; 로 균등분배하면서 너비정해짐 */
 #indiApp .left .flowdesign li{flex-shrink: 0; position: relative;}  /* 압축방지 */
 #indiApp .left .flowdesign li img{width: 100%; height: auto; border-radius: 10px; display: block; transition: .3s;}
-#indiApp .left .flowdesign li:hover {z-index: 20;}
+#indiApp .left .flowdesign li:hover {z-index: 7;}
 #indiApp .left .flowdesign li:hover img {transform: scale(1.4); box-shadow: 0 0 30px rgba(0,0,0,0.2);}
 
 
@@ -720,8 +720,8 @@ background: linear-gradient(to right,rgba(97, 146, 218, 0.75) 0%, rgba(97, 146, 
 #indiApp .left .flowdesign:hover{animation-play-state: paused;}
 
 #indiApp .left .infoAprogress{font-size: 14px; position: absolute; bottom: 0; left: 0; margin: 0 0 20px 20px;
-color: #555; font-weight: 300; margin:0 0 1em 1.1em; padding: 8px 10px; display: flex; flex-direction: column; align-items: start; gap: 4px; background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 4px; backdrop-filter: blur(60px);}
-
+color: #555; font-weight: 300; margin:0 0 1em 1.1em; padding: 8px 10px; display: flex; flex-direction: column; align-items: start; gap: 4px; background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 4px; backdrop-filter: blur(60px); opacity: 1; transition: opacity .4s;}
+#indiApp .left:hover .infoAprogress{opacity: 0;}
 
 
 #indiApp .right{flex: 1;}
